@@ -11,6 +11,34 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    rules: {
+      "react-hooks/exhaustive-deps": "warn",
+      "@typescript-eslint/no-unused-vars": "off",
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["../*"],
+              message:
+                "Please use absolute imports with @/ prefix instead of relative imports",
+            },
+          ],
+        },
+      ],
+      "react/jsx-sort-props": [
+        "error",
+        {
+          callbacksLast: true,
+          shorthandFirst: true,
+          multiline: "last",
+          ignoreCase: true,
+          reservedFirst: true,
+        },
+      ],
+    },
+  },
 ];
 
 export default eslintConfig;

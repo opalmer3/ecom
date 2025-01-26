@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@font-face {
+  font-family: "MontserratAlt";
+  src: url("/fonts/MontserratAlt1-ExtraLight.ttf") format("ttf");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: 0 0 100%;
+  --foreground: var(--primary);
+  --card: var(--background);
+  --card-foreground: var(--primary);
+  --popover: var(--background);
+  --popover-foreground: var(--primary);
+  --primary: 179 100% 11.76%;
+  --primary-foreground: 0 0 100%;
+  --secondary: 43.17 92.05% 70.39%;
+  --secondary-foreground: var(--primary);
+  --muted: 43.17 60% 85%;
+  --muted-foreground: 179 80% 15%;
+  --accent: 46.67 25.71% 93.14%;
+  --accent-foreground: var(--primary);
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0 100%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0 100%;
+  --border: 46.67 25.71% 93.14%;
+  --input: 46.67 25.71% 93.14%;
+  --light: 0 0 100%;
+  --ring: var(--primary);
+  --radius: 0.5rem;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+
+  @apply bg-background text-foreground type-body-md;
+}
