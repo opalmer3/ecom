@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { submitContactForm } from "./actions/contact";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export default function ContactPage() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -51,21 +52,12 @@ export default function ContactPage() {
         below and we will get back to you as soon as possible.
       </p>
 
-      {message && (
-        <div
-          className={`p-4 mb-6 rounded ${
-            message.type === "success"
-              ? "bg-green-50 text-green-800 border border-green-200"
-              : "bg-red-50 text-red-800 border border-red-200"
-          }`}
-        >
-          {message.text}
-        </div>
-      )}
-
       <form
         ref={formRef}
-        className="space-y-6 p-md bg-muted rounded-md flex flex-col"
+        className={cn(
+          "space-y-6 p-md bg-muted rounded-md flex flex-col transform transition-all duration-300 ease-in-out overflow-hidden",
+          message?.type === "success" && "h-0 p-0"
+        )}
         onSubmit={(e) => {
           e.preventDefault();
           if (!formRef.current) return;
@@ -122,6 +114,18 @@ export default function ContactPage() {
           {isSubmitting ? "Sending..." : "Send Message"}
         </Button>
       </form>
+
+      {message && (
+        <div
+          className={`p-4 mb-6 rounded ${
+            message.type === "success"
+              ? "bg-green-50 text-green-800 border border-green-200"
+              : "bg-red-50 text-red-800 border border-red-200"
+          }`}
+        >
+          {message.text}
+        </div>
+      )}
     </div>
   );
 }

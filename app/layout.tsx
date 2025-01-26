@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import "@/styles/globals.css";
 import { getCollections } from "@/lib/services/collections";
 import { CollectionEdge } from "@/types/storefront.types";
+import { Analytics } from "@/components/analytics";
 
 const mPlus = M_PLUS_Rounded_1c({
   subsets: ["latin"],
@@ -13,7 +14,7 @@ const mPlus = M_PLUS_Rounded_1c({
   display: "swap",
   weight: ["300", "400", "500", "700"],
   preload: true,
-  adjustFontFallback: true
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ export default async function RootLayout({
 
   return (
     <html className={`${mPlus.variable}`} lang="en">
+      <Analytics />
       <body>
         <div className="relative min-h-screen flex flex-col">
           <Navbar collections={collections as CollectionEdge[]} />
