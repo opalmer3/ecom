@@ -7,7 +7,7 @@ export async function getServerReviewWidget(productHandle: string, page = 1) {
   if (!apiKey) throw new Error("Judge.me private API key is not configured");
 
   const response = await fetch(
-    `${baseUrl}/widgets/product_review?api_token=${apiKey}&shop_domain=${process.env.NEXT_PUBLIC_SHOP_DOMAIN}&handle=${productHandle}&per_page=5&page=${page}`,
+    `${baseUrl}/widgets/product_review?api_token=${apiKey}&shop_domain=${process.env.NEXT_PUBLIC_DEFAULT_SHOP_DOMAIN}&handle=${productHandle}&per_page=5&page=${page}`,
     {
       headers: {
         Accept: "application/json",
@@ -29,7 +29,7 @@ export async function getProductRatingsWidget(productHandle: string) {
   if (!apiKey) throw new Error("Judge.me private API key is not configured");
 
   const response = await fetch(
-    `${baseUrl}/widgets/preview_badge?api_token=${apiKey}&shop_domain=${process.env.NEXT_PUBLIC_SHOP_DOMAIN}&handle=${productHandle}`,
+    `${baseUrl}/widgets/preview_badge?api_token=${apiKey}&shop_domain=${process.env.NEXT_PUBLIC_DEFAULT_SHOP_DOMAIN}&handle=${productHandle}`,
     {
       headers: {
         Accept: "application/json",

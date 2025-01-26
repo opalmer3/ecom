@@ -77,7 +77,7 @@ export const useCartStore = create<CartState>()(
 
         set({ isLoading: true });
         try {
-          const { cart, errors, warnings } = await getCart(cartId);
+          const { cart, errors } = await getCart(cartId);
           if (errors?.length) {
             toast({
               variant: "destructive",
@@ -87,12 +87,7 @@ export const useCartStore = create<CartState>()(
             set({ isLoading: false });
             return;
           }
-          if (warnings?.length) {
-            toast({
-              title: "Warning",
-              description: warnings[0].message,
-            });
-          }
+
           set({
             cart,
             isLoading: false,

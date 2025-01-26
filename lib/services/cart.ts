@@ -50,7 +50,6 @@ export async function getCart(cartId: string) {
   return {
     cart: data?.cart || null,
     errors: errors?.graphQLErrors,
-    warnings: data?.cart?.warnings,
   };
 }
 

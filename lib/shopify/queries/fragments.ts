@@ -76,7 +76,7 @@ export const CART_FRAGMENT = `#graphql
   fragment Cart on Cart {
     id
     checkoutUrl
-    lines(first: 20) {
+    lines(first: 100) {
       edges {
         node {
           ...CartLine
