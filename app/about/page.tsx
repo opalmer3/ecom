@@ -34,8 +34,8 @@ export default function About() {
       <HalfHero
         content={{
           img: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Sc330662745e941528460605052904057n.webp?v=1736521961",
-          alt: "Modern lighting design showcasing Lumenique craftsmanship",
-          eyebrow: "Welcome to Lumenique",
+          alt: "Modern lighting design showcasing exquisite craftsmanship",
+          eyebrow: "Welcome to The Modern Lighting Store",
           title: "Where Lighting Meets Artistry",
           description:
             "We believe that great lighting is more than just a necessity—it's an opportunity to transform your spaces, set the mood, and express your unique style. Our journey began with a vision to redefine how people experience lighting. By blending sleek, modern designs with cutting-edge technology, we craft lighting solutions that are not only beautiful but also functional and durable.",
@@ -49,7 +49,7 @@ export default function About() {
           eyebrow: "Innovation & Technology",
           title: "Driving Innovation in Lighting",
           description:
-            "At Lumenique, innovation drives everything we do. From energy-efficient LEDs to customizable designs, our products are crafted with the latest advancements to ensure superior performance. Whether you're looking to create a warm, inviting ambiance or a bright, productive workspace, we offer solutions tailored to suit every environment.",
+            "At The Modern Lighting Store, innovation drives everything we do. From energy-efficient LEDs to customizable designs, our products are crafted with the latest advancements to ensure superior performance. Whether you're looking to create a warm, inviting ambiance or a bright, productive workspace, we offer solutions tailored to suit every environment.",
         }}
       />
       <SplitContentBlock
@@ -67,11 +67,11 @@ export default function About() {
         variant="third-right-small"
         content={{
           img: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/S2d44c30f38194672ad66d7307d2248e78.webp?v=1735650385",
-          alt: "Beautifully lit interior showcasing Lumenique lighting",
+          alt: "Beautifully lit interior showcasing modern lighting",
           eyebrow: "Our Promise",
           title: "Illuminate Your World",
           description:
-            "Lumenique is here to inspire, innovate, and illuminate—one room at a time. Thank you for choosing us to light up your world. Let us help you find the perfect balance of style, innovation, and functionality for your space. Illuminate Your World. Choose Lumenique.",
+            "The Modern Lighting Store is here to inspire, innovate, and illuminate—one room at a time. Thank you for choosing us to light up your world. Let us help you find the perfect balance of style, innovation, and functionality for your space. Illuminate Your World. Choose The Modern Lighting Store.",
         }}
       />
     </div>

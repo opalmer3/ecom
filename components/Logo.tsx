@@ -1,7 +1,10 @@
+import { LampDeskIcon, LampWallDownIcon } from "lucide-react";
+
 export const Logo = () => {
   return (
-    <h1 className="type-title-xl font-light bg-clip-text text-transparent bg-linear-to-r from-orange-300 via-secondary to-orange-300">
-      LUMENIQUE
+    <h1 className="type-title-sm font-light relative text-primary">
+      THE MODERN <br /> LIGHTING STORE
+      <LampDeskIcon className="absolute top-0 right-0 stroke-[1.5px] scale-x-[-1]" />
     </h1>
   );
 };

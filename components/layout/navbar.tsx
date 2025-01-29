@@ -90,7 +90,8 @@ export function Navbar({ collections }: { collections: CollectionEdge[] }) {
                       <FooterLink href="/contact">Contact Us</FooterLink>
                     </div>
                     <p className="type-body-sm">
-                      &copy; LUMENIQUE {new Date().getFullYear()}
+                      &copy; THE MODERN LIGHTING STORE{" "}
+                      {new Date().getFullYear()}
                     </p>
                   </div>
                 </SheetContent>
