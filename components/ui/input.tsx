@@ -26,14 +26,14 @@ export const Input = forwardRef<
   const isRequired = props.required;
 
   return (
-    <div className="w-full flex flex-col gap-sm">
+    <div className="w-full flex flex-col gap-(--spacing-sm)">
       <label className="block type-body-sm" htmlFor={props.id}>
         {label} {isRequired && "*"}
       </label>
       <Component
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
-        className={`w-full px-md py-xs border rounded-md focus:ring-2 focus:ring-primary focus:border-primary ${
+        className={`w-full px-md py-xs border rounded-md focus:ring-2 focus:ring-primary focus:border-primary bg-background ${
           error ? "border-red-500" : "border-border"
         } ${className}`}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

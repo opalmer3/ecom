@@ -8,13 +8,13 @@ export default async function JournalPage() {
   return (
     <div className="container mx-auto py-xl">
       <h1 className="type-title-xl mb-xl">Journal</h1>
-      <div className="grid gap-xl">
+      <div className="grid gap-(--spacing-xl)">
         {posts.map((post) => (
           <article key={post.slug} className="group">
             <Link className="no-underline" href={`/journal/${post.slug}`}>
-              <div className="grid md:grid-cols-2 gap-lg">
+              <div className="grid md:grid-cols-2 gap-(--spacing-lg)">
                 {post.metadata.cardImage && (
-                  <div className="relative aspect-[16/9] overflow-hidden rounded-lg">
+                  <div className="relative aspect-16/9 overflow-hidden rounded-lg">
                     <ResponsiveImage
                       fill
                       alt={post.metadata.title}
@@ -23,7 +23,7 @@ export default async function JournalPage() {
                     />
                   </div>
                 )}
-                <div className="flex flex-col gap-sm">
+                <div className="flex flex-col gap-(--spacing-sm)">
                   <h2 className="type-title-lg group-hover:text-primary transition-colors">
                     {post.metadata.title}
                   </h2>

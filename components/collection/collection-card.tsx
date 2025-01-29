@@ -20,7 +20,7 @@ export function CollectionCard({
 }: CollectionCardProps) {
   return (
     <Link
-      className="group overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm aspect-[3/4] relative"
+      className="group overflow-hidden rounded-lg border bg-card text-card-foreground shadow-xs aspect-3/4 relative"
       href={`/${handle}`}
     >
       {image && (

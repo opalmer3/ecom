@@ -67,7 +67,7 @@ function CartItem({
           ))}
         </Select>
 
-        <span className="font-medium flex items-center gap-sm self-end">
+        <span className="font-medium flex items-center gap-(--spacing-sm) self-end">
           <span className="type-body-sm text-xs">
             ({node.quantity} x{" "}
             {formatCurrency(

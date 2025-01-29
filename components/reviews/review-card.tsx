@@ -7,13 +7,13 @@ interface ReviewCardProps {
 
 export function ReviewCard({ review }: ReviewCardProps) {
   return (
-    <div className="flex gap-sm flex-col bg-card p-lg rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+    <div className="flex gap-(--spacing-sm) flex-col bg-card p-lg rounded-lg shadow-lg hover:shadow-xl transition-shadow">
       <div className="flex items-center gap-md">
         <UserIcon className="size-6 fill-muted stroke-muted" />
         <div className="type-title-xs">{review.author.name}</div>
       </div>
 
-      <div className="flex gap-2xs">
+      <div className="flex gap-(--spacing-2xs)">
         {Array.from({ length: 5 }).map((_, i) => (
           <Star
             key={i}

@@ -17,7 +17,7 @@ export function HalfHero({ content }: HalfHeroProps) {
   return (
     <div className="relative bg-accent">
       <div className="md:container mx-auto">
-        <div className="flex flex-col-reverse md:flex-row gap-md md:gap-lg">
+        <div className="flex flex-col-reverse md:flex-row gap-md md:gap-(--spacing-lg)">
           <div className="w-full md:w-1/2 py-xl md:py-4xl flex items-center container md:max-w-none md:px-0">
             <div className="space-y-md md:space-y-lg text-secondary-foreground">
               <div className="type-button-md text-primary uppercase">
@@ -33,7 +33,7 @@ export function HalfHero({ content }: HalfHeroProps) {
               fill
               priority
               alt={content.alt}
-              containerClassName="aspect-[4/3] md:aspect-square w-full"
+              containerClassName="aspect-4/3 md:aspect-square w-full"
               src={content.img}
             />
           </div>

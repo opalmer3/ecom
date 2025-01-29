@@ -50,7 +50,7 @@ export function CardContainer({
           ) : null}
           <div
             className={cn(
-              "gap-xs flex flex-col justify-between md:items-end",
+              "gap-(--spacing-xs) flex flex-col justify-between md:items-end",
               alignment === "center" ? "md:flex-col" : "md:flex-row"
             )}
           >
@@ -79,7 +79,7 @@ export function CardContainer({
       )}
       <ol
         className={cn(
-          "gap-2xl grid grid-cols-1 justify-center sm:grid-cols-2 lg:grid-cols-3",
+          "gap-(--spacing-2xl) grid grid-cols-1 justify-center sm:grid-cols-2 lg:grid-cols-3",
           cardCount >= 4 && "lg:grid-cols-4"
         )}
       >

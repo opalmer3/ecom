@@ -14,16 +14,15 @@ export type SplitContentBlockProps = VariantProps<typeof imageVariants> & {
 const imageVariants = cva("", {
   variants: {
     variant: {
-      "half-left":
-        "col-span-2 md:col-span-4 lg:col-span-6 relative aspect-[5/4]",
+      "half-left": "col-span-2 md:col-span-4 lg:col-span-6 relative aspect-5/4",
       "half-right":
-        "col-span-2 md:col-span-4 lg:col-span-6 relative aspect-[5/4] order-2",
+        "col-span-2 md:col-span-4 lg:col-span-6 relative aspect-5/4 order-2",
       "third-left":
-        "col-span-2 md:col-span-4 lg:col-span-8 relative aspect-[16/9] lg:mr-4",
+        "col-span-2 md:col-span-4 lg:col-span-8 relative aspect-16/9 lg:mr-4",
       "third-right":
-        "col-span-2 md:col-span-4 lg:col-span-8 relative aspect-[16/9] order-2 lg:ml-4",
-      "third-left-small": `col-span-2 md:col-span-4 lg:col-span-4 aspect-[1/1] relative lg:mr-4 order-2 lg:order-none`,
-      "third-right-small": `col-span-2 md:col-span-4 lg:col-span-4 aspect-[1/1] relative lg:mr-4 order-2`,
+        "col-span-2 md:col-span-4 lg:col-span-8 relative aspect-16/9 order-2 lg:ml-4",
+      "third-left-small": `col-span-2 md:col-span-4 lg:col-span-4 aspect-1/1 relative lg:mr-4 order-2 lg:order-none`,
+      "third-right-small": `col-span-2 md:col-span-4 lg:col-span-4 aspect-1/1 relative lg:mr-4 order-2`,
     },
   },
   defaultVariants: {
@@ -78,7 +77,7 @@ export function SplitContentBlock({
     <section
       aria-describedby={descriptionId}
       aria-labelledby={titleId}
-      className="container grid w-full grid-cols-2 py-xl md:grid-cols-4 lg:grid-cols-12 gap-xl"
+      className="container grid w-full grid-cols-2 py-xl md:grid-cols-4 lg:grid-cols-12 gap-(--spacing-xl)"
     >
       <ResponsiveImage
         fill
@@ -95,7 +94,7 @@ export function SplitContentBlock({
           className: "flex items-center justify-center",
         })}
       >
-        <div className="flex flex-col gap-xl">
+        <div className="flex flex-col gap-(--spacing-xl)">
           <div className="flex flex-col gap-md">
             <div className="type-button-md uppercase">{content.eyebrow}</div>
             <h2 className="type-title-lg" id={titleId}>

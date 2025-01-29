@@ -74,7 +74,7 @@ export function ProductHeader({ product, reviewWidget }: ProductHeaderProps) {
         {product.seo.description && <div>{product.seo.description}</div>}
 
         {product.tags.length > 0 && (
-          <div className="flex flex-wrap gap-xs">
+          <div className="flex flex-wrap gap-(--spacing-xs)">
             {product.tags.map((tag) => (
               <Pill key={tag} variant="muted">
                 {tag}
@@ -89,7 +89,7 @@ export function ProductHeader({ product, reviewWidget }: ProductHeaderProps) {
           <div className="py-sm border-y space-y-md">
             {optionKeys.map((optionName) => (
               <div key={optionName} className="space-y-md">
-                <fieldset className="gap-sm flex" role="radiogroup">
+                <fieldset className="gap-(--spacing-sm) flex" role="radiogroup">
                   <legend className="type-button-sm mb-sm">{optionName}</legend>
                   {[...options[optionName]].map((value) => (
                     <label key={value} className="cursor-pointer">

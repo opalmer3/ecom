@@ -76,7 +76,7 @@ export const Share = ({ title, url }: ShareProps) => {
   ];
 
   return (
-    <div className="flex gap-2xs">
+    <div className="flex gap-(--spacing-2xs)">
       {shareOptions.map((option) => (
         <Button
           key={option.name}

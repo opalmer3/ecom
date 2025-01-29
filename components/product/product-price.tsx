@@ -13,8 +13,8 @@ export function ProductPrice({ price, compareAtPrice }: ProductPriceProps) {
     compareAtPrice && Number(compareAtPrice.amount) > Number(price.amount);
 
   return (
-    <div className="flex items-center gap-sm">
-      <div className="flex items-center gap-xs">
+    <div className="flex items-center gap-(--spacing-sm)">
+      <div className="flex items-center gap-(--spacing-xs)">
         <span className="type-title-md">
           {formatCurrency(price.amount, price.currencyCode)}
         </span>

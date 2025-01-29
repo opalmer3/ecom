@@ -30,7 +30,7 @@ export function ShippingDate({ metafields }: ShippingDateProps) {
   }
 
   return (
-    <div className="flex items-center gap-xs text-muted-foreground type-body-sm">
+    <div className="flex items-center gap-(--spacing-xs) text-muted-foreground type-body-sm">
       <Truck className="size-4" />
       <span>
         Expected delivery between{" "}

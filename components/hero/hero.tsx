@@ -39,7 +39,7 @@ export function Hero({
   return (
     <div
       className={cn(
-        "relative aspect-[9/16] md:aspect-[16/9] max-h-[800px] w-full",
+        "relative aspect-9/16 md:aspect-16/9 max-h-[800px] w-full",
         className
       )}
     >
@@ -53,10 +53,10 @@ export function Hero({
         src={image.src}
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/0" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-black/0" />
 
       <div className={heroContentVariants({ xAlign, yAlign })}>
-        <div className="space-y-lg max-w-xl md:max-w-2xl">
+        <div className="space-y-lg md:max-w-[400px]">
           <h1 className="type-title-xl text-light">{title}</h1>
           {description && (
             <p className="type-body-md md:type-body-lg text-light">

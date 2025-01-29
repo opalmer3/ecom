@@ -24,7 +24,7 @@ export function Footer({ collections }: { collections: CollectionEdge[] }) {
   return (
     <footer className="bg-muted text-muted-foreground">
       <div className="container py-md md:py-lg space-y-md md:space-y-lg">
-        <div className="grid grid-cols-1 gap-lg md:gap-3xl md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-(--spacing-lg) md:gap-(--spacing-3xl) md:grid-cols-3">
           <div className="space-y-3">
             <h2 className="type-title-lg">LUMENIQUE</h2>
             <p className="type-body-sm">

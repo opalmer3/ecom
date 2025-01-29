@@ -1,6 +1,163 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-title: var(--font-title), serif;
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-button: var(--font-sans), system-ui, sans-serif;
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-light: hsl(var(--light));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-warning: hsl(var(--warning));
+  --color-warning-foreground: hsl(var(--warning-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+
+  --spacing-3xs: 0.125rem;
+  --spacing-2xs: 0.25rem;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 2.5rem;
+  --spacing-3xl: 3rem;
+  --spacing-4xl: 4rem;
+  --spacing-5xl: 5rem;
+  --spacing-6xl: 6rem;
+  --spacing-7xl: 7rem;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-scroll: scroll 40s linear infinite;
+  --animate-scroll-reverse: scroll-reverse 40s linear infinite;
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+@utility type-title-sm {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+@utility type-title-md {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+@utility type-title-lg {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+@utility type-title-xl {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+@utility type-body-sm {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  font-family: var(--font-sans);
+  font-weight: 400;
+}
+
+@utility type-body-md {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-family: var(--font-sans);
+  font-weight: 400;
+}
+
+@utility type-body-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-family: var(--font-sans);
+  font-weight: 400;
+}
+
+@utility type-body-xl {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  font-family: var(--font-sans);
+  font-weight: 400;
+}
+
+@utility type-button-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-family: var(--font-button);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+@utility type-button-md {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-family: var(--font-button);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+@utility type-button-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-family: var(--font-button);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+@utility type-button-xl {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  font-family: var(--font-button);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 @layer base {
   html {
@@ -46,4 +203,40 @@ body {
   font-family: "DM Sans", sans-serif;
 
   @apply bg-background text-foreground type-body-md;
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

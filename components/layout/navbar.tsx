@@ -29,7 +29,7 @@ export function Navbar({ collections }: { collections: CollectionEdge[] }) {
         <PromotionalBanner />
       </div>
 
-      <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+      <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60 border-b">
         <div className="container flex h-16 items-center justify-between md:justify-end gap-md">
           <div className="flex-1 hidden md:flex justify-end">
             <nav className="flex items-center space-x-lg">
@@ -77,7 +77,7 @@ export function Navbar({ collections }: { collections: CollectionEdge[] }) {
                     ))}
                   </nav>
 
-                  <div className="bg-accent px-2xl py-xl gap-xl mt-auto flex flex-col items-start">
+                  <div className="bg-accent px-2xl py-xl gap-(--spacing-xl) mt-auto flex flex-col items-start">
                     <Separator className="mb-4" />
                     <div className="flex flex-col gap-md">
                       <FooterLink href="/privacy-policy">

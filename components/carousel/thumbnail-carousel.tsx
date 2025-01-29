@@ -7,13 +7,13 @@ import { ImageEdge } from "@/types/storefront.types";
 
 export function ThumbnailCarousel({ content }: { content: ImageEdge[] }) {
   return (
-    <Carousel className="lg:grid grid-cols-[auto_1fr] gap-sm">
+    <Carousel className="lg:grid grid-cols-[auto_1fr] gap-(--spacing-sm)">
       <CarouselContent>
         {content.map((item) => (
           <ThumbnailCarouselItem key={item.node.id} item={item.node} />
         ))}
       </CarouselContent>
-      <div className="grid grid-cols-4 gap-xs lg:grid-cols-1 lg:w-20 lg:-order-1 mt-sm lg:mt-0">
+      <div className="grid grid-cols-4 gap-(--spacing-xs) lg:grid-cols-1 lg:w-20 lg:-order-1 mt-sm lg:mt-0">
         {content.map((item, idx) => (
           <ThumbnailCarouselDots key={item.node.id} slideNumber={idx}>
             <ResponsiveImage

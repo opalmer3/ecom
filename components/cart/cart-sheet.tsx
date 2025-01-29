@@ -56,7 +56,7 @@ export function CartSheet() {
           ) : null}
         </Button>
       </SheetTrigger>
-      <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
+      <SheetContent className="flex w-full flex-col pr-0 sm:max-w-[400px]">
         <SheetHeader className="space-y-2.5 pr-6">
           <SheetTitle>Basket ({cart?.lines.edges.length ?? 0})</SheetTitle>
           <SheetDescription className="sr-only">
@@ -64,7 +64,7 @@ export function CartSheet() {
           </SheetDescription>
         </SheetHeader>
         {isLoading && (
-          <div className="absolute z-10 inset-0 bg-background/50 backdrop-blur-sm animate-pulse" />
+          <div className="absolute z-10 inset-0 bg-background/50 backdrop-blur-xs animate-pulse" />
         )}
         {cart?.lines.edges.length ? (
           <>

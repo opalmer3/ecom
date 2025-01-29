@@ -49,7 +49,7 @@ export function AddToBag({
   }
 
   return (
-    <div className="flex flex-col lg:flex-row gap-sm">
+    <div className="flex flex-col lg:flex-row gap-(--spacing-sm)">
       <Select
         className="text-center shrink-0 min-w-[80px]"
         value={quantity.toString()}

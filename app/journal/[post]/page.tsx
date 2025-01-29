@@ -39,7 +39,7 @@ export default async function PostPage({ params }: PostPageProps) {
       </header>
 
       {post.metadata.heroImage && (
-        <div className="relative aspect-[21/9] mb-xl overflow-hidden rounded-lg">
+        <div className="relative aspect-21/9 mb-xl overflow-hidden rounded-lg">
           <ResponsiveImage
             fill
             priority

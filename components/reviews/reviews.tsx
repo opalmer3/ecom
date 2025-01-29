@@ -10,7 +10,7 @@ export function Reviews({ title, reviews }: ReviewsProps) {
   const bottomRowReviews = duplicatedReviews.filter((_, i) => i % 2 === 1);
 
   return (
-    <section className="bg-gradient-to-b from-background via-secondary/20 to-background overflow-hidden">
+    <section className="bg-linear-to-b from-background via-secondary/20 to-background overflow-hidden">
       <div className="container py-3xl space-y-3xl">
         <h2 className="text-center type-title-lg">{title}</h2>
 
@@ -18,7 +18,7 @@ export function Reviews({ title, reviews }: ReviewsProps) {
           {/* Top row */}
           <div
             className={cn(
-              "flex gap-3xl animate-scroll",
+              "flex gap-(--spacing-3xl) animate-scroll",
               "hover:[animation-play-state:paused]"
             )}
             style={{
@@ -28,7 +28,7 @@ export function Reviews({ title, reviews }: ReviewsProps) {
             {topRowReviews.map((review, index) => (
               <div
                 key={`top-${review.id}-${index}`}
-                className="w-[300px] flex-shrink-0"
+                className="w-[300px] shrink-0"
               >
                 <ReviewCard review={review} />
               </div>
@@ -38,7 +38,7 @@ export function Reviews({ title, reviews }: ReviewsProps) {
           {/* Bottom row - reversed direction */}
           <div
             className={cn(
-              "flex gap-3xl animate-scroll-reverse",
+              "flex gap-(--spacing-3xl) animate-scroll-reverse",
               "hover:[animation-play-state:paused]"
             )}
             style={{
@@ -48,7 +48,7 @@ export function Reviews({ title, reviews }: ReviewsProps) {
             {bottomRowReviews.map((review, index) => (
               <div
                 key={`bottom-${review.id}-${index}`}
-                className="w-[300px] flex-shrink-0"
+                className="w-[300px] shrink-0"
               >
                 <ReviewCard review={review} />
               </div>

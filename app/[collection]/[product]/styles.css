@@ -1,15 +1,17 @@
+@reference "../../../styles/globals.css";
+
 /* Judge.me Review Widget Styles */
 .jdgm-prev-badge {
   display: flex !important;
-  @apply items-center gap-xs;
+  @apply items-center gap-(--spacing-xs);
 }
 
 .jdgm-prev-badge__stars {
-  @apply flex items-center gap-2xs cursor-default;
+  @apply flex items-center gap-(--spacing-2xs) cursor-default;
 }
 
 .jdgm-star {
-  @apply size-5 inline-block;
+  @apply size-[1.25rem] inline-block;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/%3E%3C/svg%3E");
 }
 
@@ -27,7 +29,7 @@
 
 .jdgm-rev-widg {
   display: flex !important;
-  @apply flex-col lg:flex-row lg:gap-xl;
+  @apply flex-col lg:flex-row lg:gap-(--spacing-xl);
 }
 
 .jdgm-rev-widg__header {
@@ -43,7 +45,7 @@
 }
 
 .jdgm-rev-widg__summary {
-  @apply flex items-center gap-sm mb-lg lg:sticky lg:top-[90px];
+  @apply flex items-center gap-(--spacing-sm) mb-lg lg:sticky lg:top-[90px];
 }
 
 .jdgm-histogram {
@@ -51,7 +53,7 @@
 }
 
 .jdgm-histogram__row {
-  @apply flex items-center gap-sm;
+  @apply flex items-center gap-(--spacing-sm);
 }
 .jdgm-histogram__star {
   @apply shrink-0 cursor-default;
@@ -75,11 +77,11 @@
 }
 
 .jdgm-rev__header {
-  @apply flex items-center gap-sm mb-sm flex-wrap;
+  @apply flex items-center gap-(--spacing-sm) mb-sm flex-wrap;
 }
 
 .jdgm-rev__icon {
-  @apply size-8 rounded-full bg-muted flex items-center justify-center type-body-sm;
+  @apply size-[2rem] rounded-full bg-muted flex items-center justify-center type-body-sm;
 }
 
 .jdgm-rev__author {
@@ -112,7 +114,7 @@
 }
 
 .jdgm-paginate {
-  @apply flex items-center gap-sm justify-center mt-xl;
+  @apply flex items-center gap-(--spacing-sm) justify-center mt-xl;
 }
 
 .jdgm-paginate__page.jdgm-curt {
@@ -138,7 +140,7 @@
 .jdgm-paginate__prev-page,
 .jdgm-paginate__next-page,
 .jdgm-paginate__page {
-  @apply size-8 flex items-center justify-center rounded-md hover:bg-accent;
+  @apply size-[2rem] flex items-center justify-center rounded-md hover:bg-accent;
 }
 
 .jdgm-paginate__first-page {

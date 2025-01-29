@@ -39,7 +39,7 @@ export function ProductCard({ product: { id, ...product } }: ProductCardProps) {
       aria-labelledby={cardTitleId}
       className="align-stretch flex flex-col"
     >
-      <div className="bg-muted/20 relative aspect-[3/4] rounded-lg">
+      <div className="bg-muted/20 relative aspect-3/4 rounded-lg">
         <Link className="absolute flex h-full w-full" href={productUrl}>
           {Boolean(product.badge) && (
             <Badge className="absolute right-sm top-sm z-10" variant="accent">
@@ -66,7 +66,7 @@ export function ProductCard({ product: { id, ...product } }: ProductCardProps) {
         </Link>
 
         <div
-          className="gap-xs flex flex-row items-center"
+          className="gap-(--spacing-xs) flex flex-row items-center"
           id={cardDescriptionId}
         >
           <span
