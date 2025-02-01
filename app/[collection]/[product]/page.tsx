@@ -34,6 +34,8 @@ type PageParams = {
   params: Promise<{ collection: string; product: string }>;
 };
 
+export const revalidate = 3600;
+
 export async function generateMetadata({
   params,
 }: PageParams): Promise<Metadata> {
