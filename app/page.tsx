@@ -12,7 +12,6 @@ export default async function Home() {
     getCollections(4),
   ]);
 
-  console.log(products, collections);
   return (
     <>
       <Hero

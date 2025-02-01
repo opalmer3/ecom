@@ -1,10 +1,14 @@
-import { LampDeskIcon, LampWallDownIcon } from "lucide-react";
+import Link from "next/link";
+import { ResponsiveImage } from "@/components/ui/responsive-image";
 
 export const Logo = () => {
   return (
-    <h1 className="type-title-sm font-light relative text-primary">
-      THE MODERN <br /> LIGHTING STORE
-      <LampDeskIcon className="absolute top-0 right-0 stroke-[1.5px] scale-x-[-1]" />
-    </h1>
+    <ResponsiveImage
+      fill
+      alt="The Modern Lighting Store"
+      containerClassName="aspect-[48/13] w-[150px] sm:w-[180px]"
+      sizes="180px"
+      src="/logo.png"
+    />
   );
 };

@@ -1,5 +1,6 @@
 import { CollectionEdge } from "@/types/storefront.types";
 import { NavLink } from "./nav-link";
+import { Logo } from "@/components/Logo";
 
 const footerLinks = {
   about: {
@@ -14,19 +15,18 @@ const footerLinks = {
 
 const policies = [
   { label: "Privacy policy", href: "/privacy-policy" },
-  { label: "Refund policy", href: "/refund-policy" },
+  { label: "Returns policy", href: "/returns-policy" },
   { label: "Terms of service", href: "/terms-of-service" },
-  { label: "Shipping policy", href: "/shipping-policy" },
   { label: "Contact information", href: "/contact" },
 ];
 
 export function Footer({ collections }: { collections: CollectionEdge[] }) {
   return (
     <footer className="bg-muted text-muted-foreground">
-      <div className="container py-md md:py-lg space-y-md md:space-y-lg">
+      <div className="container pt-xl md:pt-3xl py-md md:py-lg space-y-md md:space-y-lg">
         <div className="grid grid-cols-1 gap-(--spacing-lg) md:gap-(--spacing-3xl) md:grid-cols-3">
           <div className="space-y-3">
-            <h2 className="type-title-lg">THE MODERN LIGHTING STORE</h2>
+            <Logo />
             <p className="type-body-sm">
               Sleek, modern lighting designs. Combining style, innovation, and
               functionality, we illuminate your spaces with premium-quality

@@ -18,8 +18,8 @@ const mPlus = M_PLUS_Rounded_1c({
 });
 
 export const metadata: Metadata = {
-  title: "Ecommerce Store",
-  description: "Your premium shopping destination",
+  title: "The Modern Lighting Store",
+  description: "Your one-stop shop for all things lighting.",
 };
 
 export default async function RootLayout({
