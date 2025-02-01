@@ -6,6 +6,7 @@ import { getProducts } from "@/lib/services/products";
 import { getCollections } from "@/lib/services/collections";
 import { CollectionCard } from "@/components/collection/collection-card";
 
+export const revalidate = 3600;
 export default async function Home() {
   const [products, collections] = await Promise.all([
     getProducts(6),
