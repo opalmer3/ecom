@@ -6,30 +6,38 @@ import { Carousel, CarouselContent } from "@/components/ui/carousel";
 import { ImageEdge } from "@/types/storefront.types";
 
 export function ThumbnailCarousel({ content }: { content: ImageEdge[] }) {
+  const carouselItems = React.useMemo(
+    () =>
+      content.map((item, i) => (
+        <ThumbnailCarouselItem key={item.node.id} index={i} item={item.node} />
+      )),
+    [content]
+  );
+
+  // Memoize the thumbnail dots to prevent unnecessary re-renders
+  const thumbnailDots = React.useMemo(
+    () =>
+      content.map((item, idx) => (
+        <ThumbnailCarouselDots key={item.node.id} slideNumber={idx}>
+          <ResponsiveImage
+            fill
+            alt={item.node.altText ?? "Product image"}
+            containerClassName="aspect-square h-full overflow-hidden rounded-md"
+            loading={idx < 4 ? "eager" : "lazy"}
+            quality={idx < 4 ? 100 : 75}
+            sizes="(max-width: 1024px) 25vw, 64px"
+            src={item.node.url}
+          />
+        </ThumbnailCarouselDots>
+      )),
+    [content]
+  );
+
   return (
     <Carousel className="lg:grid grid-cols-[auto_1fr] gap-(--spacing-sm)">
-      <CarouselContent>
-        {content.map((item, i) => (
-          <ThumbnailCarouselItem
-            key={item.node.id}
-            index={i}
-            item={item.node}
-          />
-        ))}
-      </CarouselContent>
+      <CarouselContent>{carouselItems}</CarouselContent>
       <div className="grid grid-cols-4 gap-(--spacing-xs) lg:grid-cols-1 lg:w-20 lg:-order-1 mt-sm lg:mt-0">
-        {content.map((item, idx) => (
-          <ThumbnailCarouselDots key={item.node.id} slideNumber={idx}>
-            <ResponsiveImage
-              fill
-              alt={item.node.altText ?? "Product image"}
-              containerClassName="aspect-square h-full overflow-hidden rounded-md"
-              quality={100}
-              sizes="(max-width: 1024px) 25vw, 64px"
-              src={item.node.url}
-            />
-          </ThumbnailCarouselDots>
-        ))}
+        {thumbnailDots}
       </div>
     </Carousel>
   );
