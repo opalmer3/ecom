@@ -45,6 +45,7 @@ export default async function PostPage({ params }: PostPageProps) {
             priority
             alt={post.metadata.title}
             className="object-cover"
+            loading="eager"
             src={post.metadata.heroImage}
           />
         </div>

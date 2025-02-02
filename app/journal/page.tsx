@@ -9,7 +9,7 @@ export default async function JournalPage() {
     <div className="container mx-auto py-xl">
       <h1 className="type-title-xl mb-xl">Journal</h1>
       <div className="grid gap-(--spacing-xl)">
-        {posts.map((post) => (
+        {posts.map((post, index) => (
           <article key={post.slug} className="group">
             <Link className="no-underline" href={`/journal/${post.slug}`}>
               <div className="grid md:grid-cols-2 gap-(--spacing-lg)">
@@ -19,6 +19,7 @@ export default async function JournalPage() {
                       fill
                       alt={post.metadata.title}
                       className="object-cover transition-transform group-hover:scale-105"
+                      loading={index < 2 ? "eager" : "lazy"}
                       src={post.metadata.cardImage}
                     />
                   </div>
