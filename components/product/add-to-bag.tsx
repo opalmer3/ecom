@@ -51,6 +51,7 @@ export function AddToBag({
   return (
     <div className="flex flex-col lg:flex-row gap-(--spacing-sm)">
       <Select
+        aria-label="Select quantity"
         className="text-center shrink-0 min-w-[80px]"
         value={quantity.toString()}
         onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>

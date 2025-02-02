@@ -117,6 +117,7 @@ export default async function CollectionPage({ params }: PageParams) {
         {data.collection.products.edges?.map((product) => (
           <ProductCard
             key={product.node.id}
+            HeadingLevel="h2"
             product={{
               id: product.node.id,
               handle: product.node.handle,
