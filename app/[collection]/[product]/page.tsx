@@ -17,16 +17,28 @@ import {
 } from "@/lib/services/judge-me/server";
 import "./styles.css";
 import dynamic from "next/dynamic";
-import LazyWrap from "@/components/lazy-wrap";
 import { Product } from "@/types/storefront.types";
-import { RelatedProducts } from "@/components/product/related-products";
-import { BrandHighlights } from "@/components/brand-highlights";
+import LazyWrap from "@/components/lazy-wrap";
 
 const ProductReviews = dynamic(
   () =>
     import("@/components/product/product-reviews").then(
       (mod) => mod.ProductReviews
     ),
+  { ssr: true }
+);
+
+const RelatedProducts = dynamic(
+  () =>
+    import("@/components/product/related-products").then(
+      (mod) => mod.RelatedProducts
+    ),
+  { ssr: true }
+);
+
+const BrandHighlights = dynamic(
+  () =>
+    import("@/components/brand-highlights").then((mod) => mod.BrandHighlights),
   { ssr: true }
 );
 
@@ -129,7 +141,6 @@ export default async function ProductPage({ params }: PageParams) {
         product={data.product as Product}
         reviewWidget={ratingsWidget}
       />
-
       <LazyWrap>
         <ProductReviews
           handle={data.product.handle}
@@ -137,21 +148,24 @@ export default async function ProductPage({ params }: PageParams) {
         />
       </LazyWrap>
 
-      <RelatedProducts
-        products={data.product.collections.edges[0]?.node.products.edges
-          .map((edge) => ({
-            ...edge.node,
-            featuredImage: edge.node.featuredImage
-              ? {
-                  url: edge.node.featuredImage.url,
-                  altText: edge.node.featuredImage.altText || undefined,
-                }
-              : undefined,
-          }))
-          .filter((product) => product.handle !== data?.product?.handle)}
-      />
-
-      <BrandHighlights />
+      <LazyWrap>
+        <RelatedProducts
+          products={data.product.collections.edges[0]?.node.products.edges
+            .map((edge) => ({
+              ...edge.node,
+              featuredImage: edge.node.featuredImage
+                ? {
+                    url: edge.node.featuredImage.url,
+                    altText: edge.node.featuredImage.altText || undefined,
+                  }
+                : undefined,
+            }))
+            .filter((product) => product.handle !== data?.product?.handle)}
+        />
+      </LazyWrap>
+      <LazyWrap>
+        <BrandHighlights />
+      </LazyWrap>
     </>
   );
 }

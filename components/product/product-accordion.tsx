@@ -25,7 +25,7 @@ export function ProductAccordion({ product }: ProductAccordionProps) {
     <div className="text-left">
       <Accordion collapsible className="w-full space-y-4" type="single">
         <AccordionItem value="item-1">
-          <AccordionTrigger className="type-title-sm">
+          <AccordionTrigger className="type-title-sm" headingLevel={2}>
             Product Details
           </AccordionTrigger>
           <AccordionContent>
@@ -40,7 +40,7 @@ export function ProductAccordion({ product }: ProductAccordionProps) {
           .filter((metafield) => metafields.includes(metafield?.key ?? ""))
           .map((metafield, i) => (
             <AccordionItem key={metafield?.id} value={`item-${i + 2}`}>
-              <AccordionTrigger className="type-title-sm">
+              <AccordionTrigger className="type-title-sm" headingLevel={2}>
                 {en.metafields[metafield?.key as keyof typeof en.metafields]}
               </AccordionTrigger>
               <AccordionContent className="type-body-md [&_ul]:list-disc [&_ul]:list-inside [&_ul]:space-y-sm [&_li]:marker:mr-2">

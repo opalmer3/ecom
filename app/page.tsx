@@ -5,6 +5,7 @@ import { BrandHighlights } from "@/components/brand-highlights";
 import { getProducts } from "@/lib/services/products";
 import { getCollections } from "@/lib/services/collections";
 import { CollectionCard } from "@/components/collection/collection-card";
+import LazyWrap from "@/components/lazy-wrap";
 
 export const revalidate = 3600;
 export default async function Home() {
@@ -41,7 +42,7 @@ export default async function Home() {
             title: "Discover Our Bestsellers",
             link: {
               text: "View All",
-              url: "/bestsellers",
+              url: "/best-sellers",
             },
           }}
         >
@@ -69,30 +70,35 @@ export default async function Home() {
         </CardContainer>
       ) : null}
 
-      <BrandHighlights />
+      <LazyWrap>
+        <BrandHighlights />
+      </LazyWrap>
 
       {collections?.length ? (
-        <CardContainer>
-          {collections.map((collection) => (
-            <CollectionCard
-              key={collection.node.id}
-              description={collection.node.description}
-              handle={collection.node.handle}
-              title={collection.node.title}
-              image={
-                collection.node.image
-                  ? {
-                      url:
-                        collection.node.metafield?.reference?.image?.url ??
-                        collection.node.image.url,
-                      altText:
-                        collection.node.image.altText || collection.node.title,
-                    }
-                  : undefined
-              }
-            />
-          ))}
-        </CardContainer>
+        <LazyWrap>
+          <CardContainer>
+            {collections.map((collection) => (
+              <CollectionCard
+                key={collection.node.id}
+                description={collection.node.description}
+                handle={collection.node.handle}
+                title={collection.node.title}
+                image={
+                  collection.node.image
+                    ? {
+                        url:
+                          collection.node.metafield?.reference?.image?.url ??
+                          collection.node.image.url,
+                        altText:
+                          collection.node.image.altText ||
+                          collection.node.title,
+                      }
+                    : undefined
+                }
+              />
+            ))}
+          </CardContainer>
+        </LazyWrap>
       ) : null}
     </>
   );

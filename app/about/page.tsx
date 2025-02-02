@@ -1,5 +1,6 @@
 import { SplitContentBlock } from "@/components/content-block";
 import { HalfHero } from "@/components/hero/half-hero";
+import LazyWrap from "@/components/lazy-wrap";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -52,28 +53,33 @@ export default function About() {
             "At The Modern Lighting Store, innovation drives everything we do. From energy-efficient LEDs to customizable designs, our products are crafted with the latest advancements to ensure superior performance. Whether you're looking to create a warm, inviting ambiance or a bright, productive workspace, we offer solutions tailored to suit every environment.",
         }}
       />
-      <SplitContentBlock
-        variant="third-left-small"
-        content={{
-          img: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Sa4888b20edc24dbfbd0b5175c0ea2efcS.webp?v=1736521961",
-          alt: "Quality craftsmanship in lighting manufacturing",
-          eyebrow: "Quality & Design",
-          title: "Committed to Excellence",
-          description:
-            "What sets us apart is our commitment to quality and design. Every fixture we create undergoes meticulous testing to meet our exacting standards. We source only the finest materials, ensuring each piece is built to last and perform flawlessly for years to come. We're not just about lighting; we're about creating experiences.",
-        }}
-      />
-      <SplitContentBlock
-        variant="third-right-small"
-        content={{
-          img: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/S2d44c30f38194672ad66d7307d2248e78.webp?v=1735650385",
-          alt: "Beautifully lit interior showcasing modern lighting",
-          eyebrow: "Our Promise",
-          title: "Illuminate Your World",
-          description:
-            "The Modern Lighting Store is here to inspire, innovate, and illuminate—one room at a time. Thank you for choosing us to light up your world. Let us help you find the perfect balance of style, innovation, and functionality for your space. Illuminate Your World. Choose The Modern Lighting Store.",
-        }}
-      />
+      <LazyWrap>
+        <SplitContentBlock
+          variant="third-left-small"
+          content={{
+            img: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Sa4888b20edc24dbfbd0b5175c0ea2efcS.webp?v=1736521961",
+            alt: "Quality craftsmanship in lighting manufacturing",
+            eyebrow: "Quality & Design",
+            title: "Committed to Excellence",
+            description:
+              "What sets us apart is our commitment to quality and design. Every fixture we create undergoes meticulous testing to meet our exacting standards. We source only the finest materials, ensuring each piece is built to last and perform flawlessly for years to come. We're not just about lighting; we're about creating experiences.",
+          }}
+        />
+      </LazyWrap>
+
+      <LazyWrap>
+        <SplitContentBlock
+          variant="third-right-small"
+          content={{
+            img: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/S2d44c30f38194672ad66d7307d2248e78.webp?v=1735650385",
+            alt: "Beautifully lit interior showcasing modern lighting",
+            eyebrow: "Our Promise",
+            title: "Illuminate Your World",
+            description:
+              "The Modern Lighting Store is here to inspire, innovate, and illuminate—one room at a time. Thank you for choosing us to light up your world. Let us help you find the perfect balance of style, innovation, and functionality for your space. Illuminate Your World. Choose The Modern Lighting Store.",
+          }}
+        />
+      </LazyWrap>
     </div>
   );
 }

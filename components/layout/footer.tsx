@@ -52,7 +52,7 @@ export function Footer({ collections }: { collections: CollectionEdge[] }) {
 
           {Object.entries(footerLinks).map(([key, section]) => (
             <div key={key} className="space-y-3">
-              <h3 className="type-title-sm">{section.title}</h3>
+              <h2 className="type-title-sm">{section.title}</h2>
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.href}>

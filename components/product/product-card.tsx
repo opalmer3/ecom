@@ -22,9 +22,13 @@ export type Product = {
 
 export type ProductCardProps = {
   product: Product;
+  HeadingLevel?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 };
 
-export function ProductCard({ product: { id, ...product } }: ProductCardProps) {
+export function ProductCard({
+  product: { id, ...product },
+  HeadingLevel = "h3",
+}: ProductCardProps) {
   const cardTitleId = `title-${id}`;
   const cardDescriptionId = `description-${id}`;
 
@@ -34,7 +38,7 @@ export function ProductCard({ product: { id, ...product } }: ProductCardProps) {
   });
 
   return (
-    <div
+    <li
       aria-describedby={cardDescriptionId}
       aria-labelledby={cardTitleId}
       className="align-stretch flex flex-col"
@@ -59,9 +63,9 @@ export function ProductCard({ product: { id, ...product } }: ProductCardProps) {
       </div>
       <div className="py-md flex flex-col space-y-xs ">
         <Link className="space-x-2 flex items-center" href={productUrl}>
-          <h3 className="type-button-md" id={cardTitleId}>
+          <HeadingLevel className="type-button-md" id={cardTitleId}>
             {product.title}
-          </h3>
+          </HeadingLevel>
           <ArrowRight className="size-4" />
         </Link>
 
@@ -94,6 +98,6 @@ export function ProductCard({ product: { id, ...product } }: ProductCardProps) {
           </Link>
         ) : null}
       </div>
-    </div>
+    </li>
   );
 }

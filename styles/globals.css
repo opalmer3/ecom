@@ -165,14 +165,6 @@
   }
 }
 
-@font-face {
-  font-family: "MontserratAlt";
-  src: url("/fonts/MontserratAlt1-ExtraLight.ttf") format("ttf");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --background: 0 0 100%;
   --foreground: var(--primary);

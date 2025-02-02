@@ -9,8 +9,12 @@ export function ThumbnailCarousel({ content }: { content: ImageEdge[] }) {
   return (
     <Carousel className="lg:grid grid-cols-[auto_1fr] gap-(--spacing-sm)">
       <CarouselContent>
-        {content.map((item) => (
-          <ThumbnailCarouselItem key={item.node.id} item={item.node} />
+        {content.map((item, i) => (
+          <ThumbnailCarouselItem
+            key={item.node.id}
+            index={i}
+            item={item.node}
+          />
         ))}
       </CarouselContent>
       <div className="grid grid-cols-4 gap-(--spacing-xs) lg:grid-cols-1 lg:w-20 lg:-order-1 mt-sm lg:mt-0">
