@@ -48,6 +48,7 @@ export function Hero({
         priority
         alt={image.alt}
         containerClassName="h-full"
+        loading="eager"
         mobileSrc={image.mobileSrc}
         sizes="100vw"
         src={image.src}

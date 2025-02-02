@@ -81,9 +81,11 @@ export function SplitContentBlock({
     >
       <ResponsiveImage
         fill
+        priority
         alt={content.alt}
         className="inset-0"
         containerClassName={imageVariants({ variant })}
+        loading="eager"
         sizes="50vw"
         src={content.img}
       />

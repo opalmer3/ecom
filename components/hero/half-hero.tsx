@@ -34,6 +34,7 @@ export function HalfHero({ content }: HalfHeroProps) {
               priority
               alt={content.alt}
               containerClassName="aspect-4/3 md:aspect-square w-full"
+              loading="eager"
               src={content.img}
             />
           </div>
