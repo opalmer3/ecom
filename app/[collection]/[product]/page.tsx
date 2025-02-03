@@ -19,6 +19,7 @@ import "./styles.css";
 import dynamic from "next/dynamic";
 import { Product } from "@/types/storefront.types";
 import LazyWrap from "@/components/lazy-wrap";
+import { ProductJsonLd } from "@/components/json-ld/product-jsonld";
 
 const ProductReviews = dynamic(
   () =>
@@ -113,6 +114,38 @@ export default async function ProductPage({ params }: PageParams) {
 
   return (
     <>
+      <ProductJsonLd
+        description={data.product.description}
+        images={data.product.images.edges.map((edge) => edge.node.url)}
+        name={data.product.title}
+        brand={{
+          name: "The Modern Lighting Store",
+        }}
+        offers={data.product.variants.edges.map((variant) => ({
+          "@type": "Offer",
+          price: parseFloat(variant.node.price.amount),
+          priceCurrency: variant.node.price.currencyCode,
+          availability: variant.node.availableForSale
+            ? "https://schema.org/InStock"
+            : "https://schema.org/OutOfStock",
+          url: `${process.env.NEXT_PUBLIC_SITE_URL}/${collection}/${product}`,
+          ...(variant.node.sku && { sku: variant.node.sku }),
+        }))}
+        {...(ratingsWidget && {
+          aggregateRating: {
+            ratingValue: parseFloat(
+              ratingsWidget.match(
+                /data-average-rating='(\d+\.\d+)'\s+data-number-of-reviews='(\d+)'/
+              )?.[1] || "5"
+            ),
+            reviewCount: parseInt(
+              ratingsWidget.match(
+                /data-average-rating='(\d+\.\d+)'\s+data-number-of-reviews='(\d+)'/
+              )?.[2] || "1"
+            ),
+          },
+        })}
+      />
       <Breadcrumb className="container mx-auto py-md md:pt-0">
         <BreadcrumbList>
           <BreadcrumbItem>
