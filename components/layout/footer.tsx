@@ -17,6 +17,8 @@ const policies = [
   { label: "Privacy policy", href: "/privacy-policy" },
   { label: "Returns policy", href: "/returns-policy" },
   { label: "Terms of service", href: "/terms-of-service" },
+  { label: "Cookie notice", href: "/cookie-notice" },
+  { label: "Cookie settings", href: "/cookie-settings" },
   { label: "Contact information", href: "/contact" },
 ];
 

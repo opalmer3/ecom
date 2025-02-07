@@ -8,21 +8,20 @@ export default async function JournalPage() {
   return (
     <div className="container mx-auto py-xl">
       <h1 className="type-title-xl mb-xl">Journal</h1>
-      <div className="grid gap-(--spacing-xl)">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-(--spacing-2xl)">
         {posts.map((post, index) => (
           <article key={post.slug} className="group">
             <Link className="no-underline" href={`/journal/${post.slug}`}>
-              <div className="grid md:grid-cols-2 gap-(--spacing-lg)">
+              <div className="grid xl:grid-cols-2 gap-(--spacing-lg)">
                 {post.metadata.cardImage && (
-                  <div className="relative aspect-16/9 overflow-hidden rounded-lg">
-                    <ResponsiveImage
-                      fill
-                      alt={post.metadata.title}
-                      className="object-cover transition-transform group-hover:scale-105"
-                      loading={index < 2 ? "eager" : "lazy"}
-                      src={post.metadata.cardImage}
-                    />
-                  </div>
+                  <ResponsiveImage
+                    fill
+                    alt={post.metadata.title}
+                    className="object-cover transition-transform group-hover:scale-105"
+                    containerClassName="aspect-square rounded-lg overflow-hidden"
+                    loading={index < 2 ? "eager" : "lazy"}
+                    src={post.metadata.cardImage}
+                  />
                 )}
                 <div className="flex flex-col gap-(--spacing-sm)">
                   <h2 className="type-title-lg group-hover:text-primary transition-colors">
@@ -31,7 +30,7 @@ export default async function JournalPage() {
                   {post.metadata.date && (
                     <time className="type-label-sm text-muted-foreground">
                       {new Date(post.metadata.date).toLocaleDateString(
-                        "en-US",
+                        "en-GB",
                         {
                           year: "numeric",
                           month: "long",

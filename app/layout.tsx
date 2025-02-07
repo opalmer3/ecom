@@ -7,6 +7,7 @@ import "@/styles/globals.css";
 import { getCollections } from "@/lib/services/collections";
 import { CollectionEdge } from "@/types/storefront.types";
 import { Analytics } from "@/components/analytics";
+import CookieBanner from "@/components/cookie-banner";
 
 const mPlus = M_PLUS_Rounded_1c({
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default async function RootLayout({
           <Footer collections={collections as CollectionEdge[]} />
         </div>
         <Toaster />
+        <CookieBanner />
       </body>
     </html>
   );

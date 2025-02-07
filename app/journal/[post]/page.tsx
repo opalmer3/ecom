@@ -3,6 +3,8 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPost } from "@/lib/journal";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { ArticleJsonLd } from "@/components/json-ld/article-jsonld";
+import { CustomComponents } from "@/mdx-components";
+import { Hero } from "@/components/hero/hero";
 
 interface PostPageProps {
   params: Promise<{
@@ -40,12 +42,25 @@ export default async function PostPage({ params }: PostPageProps) {
         title={post.metadata.title}
         url={postUrl}
       />
+
+      {post.metadata.heroImage ? (
+        <Hero
+          title={post.metadata.title}
+          xAlign="left"
+          yAlign="bottom"
+          image={{
+            mobileSrc: post.metadata.cardImage,
+            src: post.metadata.heroImage,
+            alt: post.metadata.title,
+          }}
+        />
+      ) : null}
+
       <article className="container mx-auto py-xl">
         <header className="mb-xl">
-          <h1 className="type-title-2xl mb-md">{post.metadata.title}</h1>
           {post.metadata.date && (
             <time className="type-label-lg text-muted-foreground">
-              {new Date(post.metadata.date).toLocaleDateString("en-US", {
+              {new Date(post.metadata.date).toLocaleDateString("en-GB", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
@@ -54,20 +69,8 @@ export default async function PostPage({ params }: PostPageProps) {
           )}
         </header>
 
-        {post.metadata.heroImage ? (
-          <div className="relative aspect-21/9 mb-xl overflow-hidden rounded-lg">
-            <ResponsiveImage
-              fill
-              priority
-              alt={post.metadata.title}
-              className="object-cover"
-              loading="eager"
-              src={post.metadata.heroImage}
-            />
-          </div>
-        ) : null}
-        <div className="prose prose-lg">
-          <MDXRemote source={post.content} />
+        <div className="space-y-xl">
+          <MDXRemote components={CustomComponents} source={post.content} />
         </div>
       </article>
     </>
