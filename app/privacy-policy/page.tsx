@@ -1,3 +1,20 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | Your Data & Security | The Modern Lighting Store",
+  description: "Learn how The Modern Lighting Store protects your privacy and handles your personal data. Read our full Privacy Policy for details.",
+  openGraph: {
+    title: "Privacy Policy | Your Data & Security | The Modern Lighting Store",
+    description: "Learn how The Modern Lighting Store protects your privacy and handles your personal data. Read our full Privacy Policy for details.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy | Your Data & Security | The Modern Lighting Store",
+    description: "Learn how The Modern Lighting Store protects your privacy and handles your personal data. Read our full Privacy Policy for details.",
+  },
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <div className="container py-xl space-y-lg">

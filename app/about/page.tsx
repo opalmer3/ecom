@@ -11,6 +11,13 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us | Innovative & Stylish Lighting | The Modern Lighting Store",
+  description:
+    "Learn more about The Modern Lighting Store your destination for modern lighting. We blend innovation, aesthetics, and quality to illuminate your spaces beautifully.",
+};
 
 export default function About() {
   return (

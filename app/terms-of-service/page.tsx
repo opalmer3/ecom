@@ -1,4 +1,26 @@
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title:
+    "Terms of Service | Your Shopping Agreement | The Modern Lighting Store",
+  description:
+    "Read the Terms of Service for The Modern Lighting Store to understand our policies on purchases, returns, and customer rights.",
+  openGraph: {
+    title:
+      "Terms of Service | Your Shopping Agreement | The Modern Lighting Store",
+    description:
+      "Read the Terms of Service for The Modern Lighting Store to understand our policies on purchases, returns, and customer rights.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title:
+      "Terms of Service | Your Shopping Agreement | The Modern Lighting Store",
+    description:
+      "Read the Terms of Service for The Modern Lighting Store to understand our policies on purchases, returns, and customer rights.",
+  },
+};
 
 export default function TermsOfServicePage() {
   return (

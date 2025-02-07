@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 export default function ReturnsPolicyPage() {
   return (
     <div className="container py-xl space-y-lg">
@@ -98,3 +100,18 @@ export default function ReturnsPolicyPage() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Easy Returns & Refunds | The Modern Lighting Store Policy",
+  description: "Hassle-free returns at The Modern Lighting Store. Learn about our return process, refund eligibility, and how we ensure a smooth shopping experience.",
+  openGraph: {
+    title: "Easy Returns & Refunds | The Modern Lighting Store Policy",
+    description: "Hassle-free returns at The Modern Lighting Store. Learn about our return process, refund eligibility, and how we ensure a smooth shopping experience.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Easy Returns & Refunds | The Modern Lighting Store Policy",
+    description: "Hassle-free returns at The Modern Lighting Store. Learn about our return process, refund eligibility, and how we ensure a smooth shopping experience.",
+  },
+};

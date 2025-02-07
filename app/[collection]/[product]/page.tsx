@@ -69,15 +69,36 @@ export async function generateMetadata({
   }
 
   return {
-    title,
+    title: `${title} | ${data.product.collections.edges[0]?.node.title} | The Modern Lighting Store`,
     description,
+    keywords: [
+      ...data.product.tags,
+      data.product.collections.edges[0]?.node.title,
+    ],
     openGraph: {
-      title,
+      title: `${title} | ${data.product.collections.edges[0]?.node.title} | The Modern Lighting Store`,
       description,
+      type: "website",
+      images:
+        data.product.images?.edges.map((image) => ({
+          url: image.node.url,
+          width: 640,
+          height: 640,
+          alt: `${title}`,
+        })) || [],
+      locale: "en_GB",
     },
     twitter: {
-      title,
+      card: "summary_large_image",
+      title: `${title} | ${data.product.collections.edges[0]?.node.title} | The Modern Lighting Store`,
       description,
+      images:
+        data.product.images?.edges.map((image) => ({
+          url: image.node.url,
+          width: 640,
+          height: 640,
+          alt: `${title}`,
+        })) || [],
     },
   };
 }

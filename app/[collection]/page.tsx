@@ -44,15 +44,29 @@ export async function generateMetadata({
   }
 
   return {
-    title,
+    title: `${title} | The Modern Lighting Store`,
     description,
     openGraph: {
-      title,
+      title: `${title} | The Modern Lighting Store`,
       description,
+      type: "website",
+      images: data.collection.image
+        ? [
+            {
+              url: data.collection.image.url,
+              width: 1920,
+              height: 1080,
+              alt: `${title} Collection - The Modern Lighting Store`,
+            },
+          ]
+        : [],
+      locale: "en_GB",
     },
     twitter: {
-      title,
+      card: "summary_large_image",
+      title: `${title} | The Modern Lighting Store`,
       description,
+      images: data.collection.image ? [data.collection.image.url] : [],
     },
   };
 }

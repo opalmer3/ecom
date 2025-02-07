@@ -1,6 +1,13 @@
 import { getAllPosts } from "@/lib/journal";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Lighting Ideas & Trends | The Modern Lighting Store Journal",
+  description:
+    "Explore expert lighting tips, design inspiration, and the latest trends in modern lighting. Get inspired with our carefully curated articles.",
+};
 
 export default async function JournalPage() {
   const posts = await getAllPosts();

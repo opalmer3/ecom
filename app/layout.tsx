@@ -19,8 +19,69 @@ const mPlus = M_PLUS_Rounded_1c({
 });
 
 export const metadata: Metadata = {
-  title: "The Modern Lighting Store",
-  description: "Your one-stop shop for all things lighting.",
+  title: "Modern Lighting for Every Space | The Modern Lighting Store",
+  description:
+    "Discover contemporary lighting solutions designed to enhance your home. Shop stylish table lamps, floor lamps, ceiling lights, and smart lighting.",
+  keywords: [
+    "modern lighting",
+    "contemporary lamps",
+    "smart lighting",
+    "home lighting",
+    "LED lights",
+    "designer lamps",
+    "ceiling lights",
+    "table lamps",
+    "floor lamps",
+    "office lighting",
+  ],
+  authors: [{ name: "The Modern Lighting Store" }],
+  creator: "The Modern Lighting Store",
+  publisher: "The Modern Lighting Store",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  openGraph: {
+    type: "website",
+    title: "The Modern Lighting Store | Contemporary Lighting Solutions",
+    description:
+      "Discover contemporary lighting solutions designed to enhance your home. Shop stylish table lamps, floor lamps, ceiling lights, and smart lighting.",
+    url: "https://modernlighting.store",
+    siteName: "The Modern Lighting Store",
+    images: [
+      {
+        url: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/logo.png?v=1738422128",
+        width: 645,
+        height: 175,
+        alt: "The Modern Lighting Store - Contemporary Lighting Solutions",
+      },
+    ],
+    locale: "en_GB",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Modern Lighting Store | Contemporary Lighting Solutions",
+    description:
+      "Discover contemporary lighting solutions designed to enhance your home. Shop stylish table lamps, floor lamps, ceiling lights, and smart lighting.",
+    images: [
+      {
+        url: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/logo.png?v=1738422128",
+        width: 645,
+        height: 175,
+        alt: "The Modern Lighting Store - Contemporary Lighting Solutions",
+      },
+    ],
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  category: "Home & Garden",
 };
 
 export default async function RootLayout({

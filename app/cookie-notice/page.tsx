@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Metadata } from "next";
 
 export default function CookieNoticePage() {
   return (
@@ -154,3 +155,18 @@ export default function CookieNoticePage() {
     </div>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Cookie Policy | How We Use Cookies | The Modern Lighting Store",
+  description: "Understand how The Modern Lighting Store uses cookies to enhance your browsing experience. Read our Cookie Policy for more details.",
+  openGraph: {
+    title: "Cookie Policy | How We Use Cookies | The Modern Lighting Store",
+    description: "Understand how The Modern Lighting Store uses cookies to enhance your browsing experience. Read our Cookie Policy for more details.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Cookie Policy | How We Use Cookies | The Modern Lighting Store",
+    description: "Understand how The Modern Lighting Store uses cookies to enhance your browsing experience. Read our Cookie Policy for more details.",
+  },
+};
