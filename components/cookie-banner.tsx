@@ -65,7 +65,7 @@ export default function CookieBanner() {
           </DialogDescription>
         </DialogHeader>
 
-        {showPreferences ? <CookiePreferences showControls={false} /> : null}
+        {showPreferences ? <CookiePreferences /> : null}
 
         <DialogFooter className="flex sm:justify-center flex-wrap gap-md">
           <Button className="sm:flex-1" onClick={handleAccept}>
