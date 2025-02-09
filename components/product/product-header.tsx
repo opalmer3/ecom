@@ -85,40 +85,46 @@ export function ProductHeader({ product, reviewWidget }: ProductHeaderProps) {
 
         <div dangerouslySetInnerHTML={{ __html: reviewWidget }} />
 
-        {optionKeys.length > 1 && (
-          <div className="py-sm border-y space-y-md">
-            {optionKeys.map((optionName) => (
-              <div key={optionName} className="space-y-md">
-                <fieldset className="gap-(--spacing-sm) flex" role="radiogroup">
-                  <legend className="type-button-sm mb-sm">{optionName}</legend>
-                  {[...options[optionName]].map((value) => (
-                    <label key={value} className="cursor-pointer">
-                      <input
-                        checked={selectedOptions[optionName] === value}
-                        className="hidden"
-                        name={optionName}
-                        type="radio"
-                        value={value}
-                        onChange={() => handleOptionChange(optionName, value)}
-                      />
-                      <Button
-                        className="pointer-events-none"
-                        size="sm"
-                        variant={
-                          selectedOptions[optionName] === value
-                            ? "secondary"
-                            : "outline"
-                        }
-                      >
-                        {value}
-                      </Button>
-                    </label>
-                  ))}
-                </fieldset>
-              </div>
-            ))}
-          </div>
-        )}
+        {optionKeys.length > 0 &&
+          ([...options[optionKeys[0]]].length > 1 || optionKeys.length > 1) && (
+            <div className="py-sm border-y space-y-md">
+              {optionKeys.map((optionName) => (
+                <div key={optionName} className="space-y-md">
+                  <fieldset
+                    className="gap-(--spacing-sm) flex"
+                    role="radiogroup"
+                  >
+                    <legend className="type-button-sm mb-sm">
+                      {optionName}
+                    </legend>
+                    {[...options[optionName]].map((value) => (
+                      <label key={value} className="cursor-pointer">
+                        <input
+                          checked={selectedOptions[optionName] === value}
+                          className="hidden"
+                          name={optionName}
+                          type="radio"
+                          value={value}
+                          onChange={() => handleOptionChange(optionName, value)}
+                        />
+                        <Button
+                          className="pointer-events-none"
+                          size="sm"
+                          variant={
+                            selectedOptions[optionName] === value
+                              ? "secondary"
+                              : "outline"
+                          }
+                        >
+                          {value}
+                        </Button>
+                      </label>
+                    ))}
+                  </fieldset>
+                </div>
+              ))}
+            </div>
+          )}
 
         <AddToBag
           isLoading={isLoading}

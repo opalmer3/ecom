@@ -11,7 +11,7 @@ export const revalidate = 3600;
 export default async function Home() {
   const [products, collections] = await Promise.all([
     getProducts(6),
-    getCollections(4),
+    getCollections(8),
   ]);
 
   return (
@@ -56,6 +56,11 @@ export default async function Home() {
                 description: product.node.description,
                 collection: product.node.collections.edges?.[0].node,
                 price: product.node.priceRange.minVariantPrice.amount,
+                salePrice:
+                  product.node.compareAtPriceRange.minVariantPrice.amount >
+                  product.node.priceRange.minVariantPrice.amount
+                    ? product.node.compareAtPriceRange.minVariantPrice.amount
+                    : undefined,
                 image: product.node.featuredImage?.url
                   ? {
                       url: product.node.featuredImage.url,
