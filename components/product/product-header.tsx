@@ -91,7 +91,7 @@ export function ProductHeader({ product, reviewWidget }: ProductHeaderProps) {
               {optionKeys.map((optionName) => (
                 <div key={optionName} className="space-y-md">
                   <fieldset
-                    className="gap-(--spacing-sm) flex"
+                    className="gap-(--spacing-sm) flex flex-wrap"
                     role="radiogroup"
                   >
                     <legend className="type-button-sm mb-sm">

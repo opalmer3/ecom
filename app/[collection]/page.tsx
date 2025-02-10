@@ -140,8 +140,9 @@ export default async function CollectionPage({ params }: PageParams) {
               description: product.node.description,
               price: product.node.priceRange.minVariantPrice.amount,
               salePrice:
-                product.node.compareAtPriceRange?.minVariantPrice.amount >
-                product.node.priceRange.minVariantPrice.amount
+                parseFloat(
+                  product.node.compareAtPriceRange?.minVariantPrice.amount
+                ) > parseFloat(product.node.priceRange.minVariantPrice.amount)
                   ? product.node.compareAtPriceRange.minVariantPrice.amount
                   : undefined,
               image: product.node.featuredImage?.url

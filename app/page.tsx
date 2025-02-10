@@ -57,8 +57,9 @@ export default async function Home() {
                 collection: product.node.collections.edges?.[0].node,
                 price: product.node.priceRange.minVariantPrice.amount,
                 salePrice:
-                  product.node.compareAtPriceRange.minVariantPrice.amount >
-                  product.node.priceRange.minVariantPrice.amount
+                  parseFloat(
+                    product.node.compareAtPriceRange.minVariantPrice.amount
+                  ) > parseFloat(product.node.priceRange.minVariantPrice.amount)
                     ? product.node.compareAtPriceRange.minVariantPrice.amount
                     : undefined,
                 image: product.node.featuredImage?.url
