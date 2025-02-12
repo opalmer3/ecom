@@ -41,12 +41,6 @@ importers:
       '@shopify/storefront-api-client':
         specifier: ^1.0.3
         version: 1.0.3
-      '@types/mdx':
-        specifier: ^2.0.13
-        version: 2.0.13
-      '@types/nodemailer':
-        specifier: ^6.4.17
-        version: 6.4.17
       '@vercel/analytics':
         specifier: ^1.5.0
         version: 1.5.0(next@15.1.0(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
@@ -114,9 +108,15 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4.0.0
         version: 4.0.0
+      '@types/mdx':
+        specifier: ^2.0.13
+        version: 2.0.13
       '@types/node':
         specifier: ^20
         version: 20.17.10
+      '@types/nodemailer':
+        specifier: ^6.4.17
+        version: 6.4.17
       '@types/react':
         specifier: ^19
         version: 19.0.1
