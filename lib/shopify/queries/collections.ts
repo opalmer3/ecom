@@ -23,6 +23,7 @@ export const COLLECTIONS_QUERY = `#graphql
           handle
           description
           descriptionHtml
+          updatedAt
           image {
             ...Image
           }

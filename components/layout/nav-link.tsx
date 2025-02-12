@@ -3,13 +3,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-interface NavLinkProps {
+type NavLinkProps = {
   href: string;
   children: React.ReactNode;
   className?: string;
-}
+} & React.ComponentPropsWithoutRef<"a">;
 
-export function NavLink({ href, children, className }: NavLinkProps) {
+export function NavLink({ href, children, className, ...props }: NavLinkProps) {
   const pathname = usePathname();
   const isActive = pathname === href;
 
@@ -17,10 +17,11 @@ export function NavLink({ href, children, className }: NavLinkProps) {
     <Link
       href={href}
       className={cn(
-        "type-button-md text-foreground transition-colors hover:text-foreground/80",
+        "type-button-lg text-foreground transition-colors hover:text-foreground/80",
         isActive && "text-foreground/80",
         className
       )}
+      {...props}
     >
       {children}
     </Link>

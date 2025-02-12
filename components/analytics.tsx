@@ -1,6 +1,7 @@
 "use client";
 
 import Script from "next/script";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 
 export function Analytics() {
   if (process.env.NODE_ENV !== "production") {
@@ -21,6 +22,7 @@ export function Analytics() {
           gtag('config', 'G-716765H1V9');
         `}
       </Script>
+      <VercelAnalytics />
     </>
   );
 }

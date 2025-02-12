@@ -95,7 +95,7 @@ export default async function CollectionPage({ params }: PageParams) {
     <div className="relative">
       <div className="absolute inset-x-0 top-lg z-10">
         <Breadcrumb className="container mx-auto">
-          <BreadcrumbList className="text-light">
+          <BreadcrumbList className="text-light px-xs inline-flex rounded-md bg-black/20 backdrop-blur-sm">
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
                 <Link href="/">Home</Link>
