@@ -22,6 +22,12 @@ export const metadata: Metadata = {
   title: "Modern Lighting for Every Space | The Modern Lighting Store",
   description:
     "Discover contemporary lighting solutions designed to enhance your home. Shop stylish table lamps, floor lamps, ceiling lights, and smart lighting.",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.modernlighting.store"
+  ),
+  alternates: {
+    canonical: "./",
+  },
   keywords: [
     "modern lighting",
     "contemporary lamps",
@@ -50,7 +56,7 @@ export const metadata: Metadata = {
     title: "The Modern Lighting Store | Contemporary Lighting Solutions",
     description:
       "Discover contemporary lighting solutions designed to enhance your home. Shop stylish table lamps, floor lamps, ceiling lights, and smart lighting.",
-    url: "https://modernlighting.store",
+    url: "https://www.modernlighting.store",
     siteName: "The Modern Lighting Store",
     images: [
       {

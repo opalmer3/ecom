@@ -46,6 +46,9 @@ export async function generateMetadata({
   return {
     title: `${title} | The Modern Lighting Store`,
     description,
+    alternates: {
+      canonical: `/${collectionHandle}`,
+    },
     openGraph: {
       title: `${title} | The Modern Lighting Store`,
       description,
