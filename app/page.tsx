@@ -2,15 +2,17 @@ import { CardContainer } from "@/components/card-container";
 import { Hero } from "@/components/hero/hero";
 import { ProductCard } from "@/components/product/product-card";
 import { BrandHighlights } from "@/components/brand-highlights";
-import { getProducts } from "@/lib/services/products";
-import { getCollections } from "@/lib/services/collections";
+import {
+  getCollectionByHandle,
+  getCollections,
+} from "@/lib/services/collections";
 import { CollectionCard } from "@/components/collection/collection-card";
 import LazyWrap from "@/components/lazy-wrap";
 
 export const revalidate = 3600;
 export default async function Home() {
-  const [products, collections] = await Promise.all([
-    getProducts(6),
+  const [bestsellers, collections] = await Promise.all([
+    getCollectionByHandle("best-sellers"),
     getCollections(8),
   ]);
 
@@ -34,7 +36,7 @@ export default async function Home() {
         }}
       />
 
-      {products?.length ? (
+      {bestsellers?.collection?.products?.edges?.length ? (
         <CardContainer
           id="bestsellers"
           content={{
@@ -46,7 +48,7 @@ export default async function Home() {
             },
           }}
         >
-          {products?.map((product) => (
+          {bestsellers?.collection?.products?.edges?.map((product) => (
             <ProductCard
               key={product.node.id}
               product={{
