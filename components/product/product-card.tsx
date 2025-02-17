@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
-import { Collection } from "@/types/storefront.types";
+import { Collection, MoneyV2 } from "@/types/storefront.types";
 import { getProductUrl } from "@/lib/utils/url";
 import { ArrowRight } from "lucide-react";
 
@@ -11,7 +11,14 @@ export type Product = {
   title: string;
   description: string;
   collection: Pick<Collection, "title" | "handle">;
-  price: string;
+  price: {
+    minVariantPrice: Pick<MoneyV2, "amount" | "currencyCode">;
+    maxVariantPrice?: Pick<MoneyV2, "amount" | "currencyCode">;
+  };
+  compareAtPrice?: {
+    minVariantPrice: Pick<MoneyV2, "amount" | "currencyCode">;
+    maxVariantPrice?: Pick<MoneyV2, "amount" | "currencyCode">;
+  };
   salePrice?: string;
   badge?: string;
   image?: {
@@ -74,19 +81,43 @@ export function ProductCard({
           id={cardDescriptionId}
         >
           <span
-            aria-label={`Actual Price ${product.price}`}
             className="type-button-md"
+            aria-label={
+              product.price.minVariantPrice.amount ===
+              product.price.maxVariantPrice?.amount
+                ? `Price ${product.price.minVariantPrice.amount}`
+                : `Price range from ${product.price.minVariantPrice.amount} to ${product.price.maxVariantPrice?.amount}`
+            }
           >
-            &pound;{product.price}
+            &pound;{product.price.minVariantPrice.amount}
+            {product.price.minVariantPrice.amount <
+            product.price.maxVariantPrice?.amount ? (
+              <> - &pound;{product.price.maxVariantPrice?.amount}</>
+            ) : null}
           </span>
-          {Boolean(product.salePrice) && (
-            <span
-              aria-label={`Was Price ${product.salePrice}`}
-              className="type-button-sm line-through text-foreground/80"
-            >
-              &pound;{product.salePrice}
-            </span>
-          )}
+          {product.compareAtPrice ? (
+            parseFloat(product.compareAtPrice.minVariantPrice.amount) >
+            parseFloat(product.price.minVariantPrice.amount) ? (
+              <span
+                className="type-button-sm line-through text-foreground/80"
+                aria-label={
+                  product.compareAtPrice.minVariantPrice.amount ===
+                  product.compareAtPrice.maxVariantPrice?.amount
+                    ? `Was Price ${product.compareAtPrice.minVariantPrice.amount}`
+                    : `Was Price range from ${product.compareAtPrice.minVariantPrice.amount} to ${product.compareAtPrice.maxVariantPrice?.amount}`
+                }
+              >
+                &pound;{product.compareAtPrice.minVariantPrice.amount}
+                {product.compareAtPrice.minVariantPrice.amount <
+                product.compareAtPrice.maxVariantPrice?.amount ? (
+                  <>
+                    {" "}
+                    - &pound;{product.compareAtPrice.maxVariantPrice?.amount}
+                  </>
+                ) : null}
+              </span>
+            ) : null
+          ) : null}
         </div>
 
         {product.collection ? (

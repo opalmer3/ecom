@@ -59,7 +59,7 @@ export const PRODUCT_BY_HANDLE_QUERY = `#graphql
           }
         }
       }
-      images(first: 10) {
+      images(first: 16) {
         edges {
           node {
             ...Image
@@ -85,6 +85,9 @@ export const PRODUCT_BY_HANDLE_QUERY = `#graphql
             selectedOptions {
               name
               value
+            }
+            image {
+              ...Image
             }
             price {
               amount

@@ -4,32 +4,59 @@ import { Pill } from "@/components/ui/pill";
 import { MoneyV2 } from "@/types/storefront.types";
 
 interface ProductPriceProps {
-  price: MoneyV2;
-  compareAtPrice?: MoneyV2 | null;
+  price: {
+    minVariantPrice: Pick<MoneyV2, "amount" | "currencyCode">;
+    maxVariantPrice?: Pick<MoneyV2, "amount" | "currencyCode">;
+  };
+  compareAtPrice?: {
+    minVariantPrice: Pick<MoneyV2, "amount" | "currencyCode">;
+    maxVariantPrice?: Pick<MoneyV2, "amount" | "currencyCode">;
+  } | null;
 }
 
 export function ProductPrice({ price, compareAtPrice }: ProductPriceProps) {
+  const { minVariantPrice, maxVariantPrice } = price;
+  const hasMaxPrice =
+    maxVariantPrice &&
+    Number(maxVariantPrice.amount) > Number(minVariantPrice.amount);
+
   const isOnSale =
-    compareAtPrice && Number(compareAtPrice.amount) > Number(price.amount);
+    compareAtPrice?.minVariantPrice &&
+    Number(compareAtPrice.minVariantPrice.amount) >
+      Number(minVariantPrice.amount);
 
   return (
     <div className="flex items-center gap-(--spacing-sm)">
       <div className="flex items-center gap-(--spacing-xs)">
         <span className="type-title-md">
-          {formatCurrency(price.amount, price.currencyCode)}
+          {hasMaxPrice ? (
+            <>
+              {formatCurrency(
+                minVariantPrice.amount,
+                minVariantPrice.currencyCode
+              )}
+              {" - "}
+              {formatCurrency(
+                maxVariantPrice.amount,
+                maxVariantPrice.currencyCode
+              )}
+            </>
+          ) : (
+            formatCurrency(minVariantPrice.amount, minVariantPrice.currencyCode)
+          )}
         </span>
         {isOnSale && (
           <>
             <span className="type-body-sm text-muted-foreground line-through">
               {formatCurrency(
-                compareAtPrice.amount,
-                compareAtPrice.currencyCode
+                compareAtPrice.minVariantPrice.amount,
+                compareAtPrice.minVariantPrice.currencyCode
               )}
             </span>
-            <Pill className="text-xs type-body-sm" variant="secondary">
+            <Pill className="type-body-sm" variant="secondary">
               {calculateDiscount(
-                Number(price.amount),
-                Number(compareAtPrice.amount)
+                Number(minVariantPrice.amount),
+                Number(compareAtPrice.minVariantPrice.amount)
               )}
               % Off
             </Pill>

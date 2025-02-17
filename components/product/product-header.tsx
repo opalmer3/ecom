@@ -7,6 +7,8 @@ import { AddToBag } from "./add-to-bag";
 import { useCartStore } from "@/lib/store/cart";
 import { Pill } from "@/components/ui/pill";
 import { ProductPrice } from "@/components/product/product-price";
+import { ResponsiveImage } from "@/components/ui/responsive-image";
+import { cn } from "@/lib/utils";
 
 interface ProductHeaderProps {
   product: Product;
@@ -53,6 +55,103 @@ export function ProductHeader({ product, reviewWidget }: ProductHeaderProps) {
 
   const { addItem, isLoading } = useCartStore();
 
+  const variantOptions = useMemo(() => {
+    return optionKeys.length > 0
+      ? ([...options[optionKeys[0]]].length > 1 || optionKeys.length > 1) && (
+          <div className="py-sm border-y space-y-md">
+            {optionKeys.map((optionName, i) => (
+              <div key={optionName} className="space-y-md">
+                <fieldset
+                  className="gap-(--spacing-sm) flex flex-wrap"
+                  role="radiogroup"
+                >
+                  <legend className="type-button-sm mb-sm">{optionName}</legend>
+                  {[...options[optionName]].map((value) => {
+                    const variant = product.variants.edges.find((variant) =>
+                      i === 0
+                        ? variant.node.selectedOptions.some(
+                            (option) =>
+                              option.name === optionName &&
+                              option.value === value
+                          )
+                        : variant.node.selectedOptions.every((option, index) =>
+                            index === 0
+                              ? selectedOptions[option.name] === option.value
+                              : option.name === optionName &&
+                                option.value === value
+                          )
+                    );
+
+                    const isSelected = selectedOptions[optionName] === value;
+                    return (
+                      <label key={value} className="cursor-pointer font-medium">
+                        <input
+                          checked={isSelected}
+                          className="hidden"
+                          name={optionName}
+                          type="radio"
+                          value={value}
+                          onChange={() => handleOptionChange(optionName, value)}
+                        />
+                        <div
+                          className={cn(
+                            "flex flex-col items-center gap-sm p-sm rounded-md w-[160px] h-full",
+                            isSelected
+                              ? "border-2 border-secondary"
+                              : "border-2 border-border",
+                            !variant?.node.availableForSale &&
+                              "opacity-50 cursor-not-allowed"
+                          )}
+                        >
+                          <button className="pointer-events-none flex flex-col gap-sm h-full w-full">
+                            {variant?.node.image && (
+                              <ResponsiveImage
+                                fill
+                                alt={`${optionName} ${value}`}
+                                containerClassName="aspect-square"
+                                sizes="128px"
+                                src={variant.node.image.url}
+                              />
+                            )}
+                            <span>{value}</span>
+                          </button>
+                          {i === 0 ? (
+                            <span>
+                              &pound;
+                              {(() => {
+                                const matchingVariants =
+                                  product.variants.edges.filter((variant) =>
+                                    variant.node.selectedOptions.some(
+                                      (option) =>
+                                        option.name === optionName &&
+                                        option.value === value
+                                    )
+                                  );
+                                const prices = matchingVariants.map(
+                                  (v) => v.node.price.amount
+                                );
+                                const minPrice = Math.min(...prices);
+                                const maxPrice = Math.max(...prices);
+                                return optionKeys.length > 1
+                                  ? `${minPrice} - ${maxPrice}`
+                                  : minPrice;
+                              })()}
+                            </span>
+                          ) : (
+                            <span>&pound;{variant?.node.price?.amount}</span>
+                          )}
+                        </div>
+                      </label>
+                    );
+                  })}
+                </fieldset>
+              </div>
+            ))}
+          </div>
+        )
+      : null;
+  }, [optionKeys, options, product.variants.edges, selectedOptions]);
+
   return (
     <>
       <div className="space-y-md flex flex-col">
@@ -64,11 +163,8 @@ export function ProductHeader({ product, reviewWidget }: ProductHeaderProps) {
         </h1>
 
         <ProductPrice
-          compareAtPrice={selectedVariant?.node.compareAtPrice}
-          price={
-            selectedVariant?.node.price ||
-            product.priceRange.minVariantPrice.amount
-          }
+          compareAtPrice={product.compareAtPriceRange}
+          price={product.priceRange}
         />
 
         {product.seo.description && <div>{product.seo.description}</div>}
@@ -85,46 +181,7 @@ export function ProductHeader({ product, reviewWidget }: ProductHeaderProps) {
 
         <div dangerouslySetInnerHTML={{ __html: reviewWidget }} />
 
-        {optionKeys.length > 0 &&
-          ([...options[optionKeys[0]]].length > 1 || optionKeys.length > 1) && (
-            <div className="py-sm border-y space-y-md">
-              {optionKeys.map((optionName) => (
-                <div key={optionName} className="space-y-md">
-                  <fieldset
-                    className="gap-(--spacing-sm) flex flex-wrap"
-                    role="radiogroup"
-                  >
-                    <legend className="type-button-sm mb-sm">
-                      {optionName}
-                    </legend>
-                    {[...options[optionName]].map((value) => (
-                      <label key={value} className="cursor-pointer">
-                        <input
-                          checked={selectedOptions[optionName] === value}
-                          className="hidden"
-                          name={optionName}
-                          type="radio"
-                          value={value}
-                          onChange={() => handleOptionChange(optionName, value)}
-                        />
-                        <Button
-                          className="pointer-events-none"
-                          size="sm"
-                          variant={
-                            selectedOptions[optionName] === value
-                              ? "secondary"
-                              : "outline"
-                          }
-                        >
-                          {value}
-                        </Button>
-                      </label>
-                    ))}
-                  </fieldset>
-                </div>
-              ))}
-            </div>
-          )}
+        {variantOptions}
 
         <AddToBag
           isLoading={isLoading}

@@ -1,4 +1,4 @@
-import { Product } from "@/types/storefront.types";
+import { MoneyV2, Product } from "@/types/storefront.types";
 import { ProductCard } from "@/components/product/product-card";
 import { CardContainer } from "@/components/card-container";
 
@@ -19,16 +19,12 @@ type RelatedProduct = Pick<
     altText?: string;
   };
   priceRange: {
-    minVariantPrice: {
-      amount: string;
-      currencyCode: string;
-    };
+    minVariantPrice: Pick<MoneyV2, "amount" | "currencyCode">;
+    maxVariantPrice?: Pick<MoneyV2, "amount" | "currencyCode">;
   };
   compareAtPriceRange?: {
-    minVariantPrice: {
-      amount: string;
-      currencyCode: string;
-    };
+    minVariantPrice: Pick<MoneyV2, "amount" | "currencyCode">;
+    maxVariantPrice?: Pick<MoneyV2, "amount" | "currencyCode">;
   };
 };
 
@@ -54,13 +50,8 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
             title: product.title,
             collection: product.collections.edges?.[0].node,
             description: product.description,
-            price: product.priceRange.minVariantPrice.amount,
-            salePrice:
-              product.compareAtPriceRange?.minVariantPrice?.amount &&
-              parseFloat(product.compareAtPriceRange.minVariantPrice.amount) >
-                parseFloat(product.priceRange.minVariantPrice.amount)
-                ? product.compareAtPriceRange.minVariantPrice.amount
-                : undefined,
+            price: product.priceRange,
+            compareAtPrice: product.compareAtPriceRange,
             image: product.featuredImage?.url
               ? {
                   url: product.featuredImage.url,
