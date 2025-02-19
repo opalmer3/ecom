@@ -58,14 +58,16 @@ export function ProductHeader({ product, reviewWidget }: ProductHeaderProps) {
   const variantOptions = useMemo(() => {
     return optionKeys.length > 0
       ? ([...options[optionKeys[0]]].length > 1 || optionKeys.length > 1) && (
-          <div className="py-sm border-y space-y-md">
+          <div className="py-sm border-y space-y-lg">
             {optionKeys.map((optionName, i) => (
               <div key={optionName} className="space-y-md">
                 <fieldset
-                  className="gap-(--spacing-sm) flex flex-wrap"
+                  className="gap-(--spacing-sm) grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3"
                   role="radiogroup"
                 >
-                  <legend className="type-button-sm mb-sm">{optionName}</legend>
+                  <legend className="type-button-md font-semibold mb-sm col-span-2">
+                    {optionName}
+                  </legend>
                   {[...options[optionName]].map((value) => {
                     const variant = product.variants.edges.find((variant) =>
                       i === 0
@@ -95,7 +97,7 @@ export function ProductHeader({ product, reviewWidget }: ProductHeaderProps) {
                         />
                         <div
                           className={cn(
-                            "flex flex-col items-center gap-sm p-sm rounded-md w-[160px] h-full",
+                            "flex flex-col items-center gap-sm p-xs rounded-md h-full",
                             isSelected
                               ? "border-2 border-secondary"
                               : "border-2 border-border",
