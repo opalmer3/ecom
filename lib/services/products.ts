@@ -55,6 +55,23 @@ export const getProductByHandle = unstable_cache(
       );
     }
 
+    data?.product?.collections.edges.sort((a, b) => {
+      return (
+        Number(a.node.metafield?.value ?? 0) -
+        Number(b.node.metafield?.value ?? 0)
+      );
+    });
+
+    for (const product of data?.product?.collections.edges[0].node.products
+      .edges ?? []) {
+      product.node.collections.edges.sort((a, b) => {
+        return (
+          Number(a.node.metafield?.value ?? 0) -
+          Number(b.node.metafield?.value ?? 0)
+        );
+      });
+    }
+
     return data;
   },
   ["product-by-handle"],

@@ -108,7 +108,12 @@ export async function generateStaticParams() {
   const validPaths: { collection: string; product: string }[] = [];
 
   products.forEach((product) => {
-    const collection = product.node.collections.edges[0]?.node;
+    const collection = product.node.collections.edges.sort((a, b) => {
+      return (
+        Number(a.node.metafield?.value ?? 0) -
+        Number(b.node.metafield?.value ?? 0)
+      );
+    })[0]?.node;
     if (collection) {
       validPaths.push({
         collection: collection.handle,

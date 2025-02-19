@@ -25,9 +25,14 @@ export const getCollections = unstable_cache(
       );
     }
 
-    return (data?.collections?.edges || []).filter(
-      (collection) => collection.node.products.edges.length > 0
-    );
+    return (data?.collections?.edges || [])
+      .filter((collection) => collection.node.products.edges.length > 0)
+      .sort((a, b) => {
+        return (
+          Number(a.node.sortOrder?.value ?? 0) -
+          Number(b.node.sortOrder?.value ?? 0)
+        );
+      });
   },
   ["collections"],
   {
@@ -64,6 +69,14 @@ export const getCollectionByHandle = unstable_cache(
       );
     }
 
+    for (const product of data?.collection?.products.edges ?? []) {
+      product.node.collections.edges.sort((a, b) => {
+        return (
+          Number(a.node.metafield?.value ?? 0) -
+          Number(b.node.metafield?.value ?? 0)
+        );
+      });
+    }
     return data;
   },
   ["collection-by-handle"],

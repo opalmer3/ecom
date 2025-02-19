@@ -3,11 +3,14 @@ export const PRODUCT_CARD_FRAGMENT = `#graphql
     id
     title
     handle
-    collections(first: 1) {
+    collections(first: 10) {
       edges {
         node {
           title
           handle
+          metafield(namespace:"custom",key: "sort_order") {
+            value
+          }
         }
       }
     }

@@ -18,11 +18,21 @@ export const PRODUCTS_QUERY = `#graphql
         node {
           ...ProductCard
           description
-          collections(first: 1) {
+          collections(first: 10) {
             edges {
               node {
                 title
                 handle
+                products(first: 4, sortKey: BEST_SELLING, reverse: true) {
+                  edges {
+                    node {
+                      ...ProductCard
+                      metafield(namespace:"custom",key: "sort_order") {
+                        value
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -44,7 +54,7 @@ export const PRODUCT_BY_HANDLE_QUERY = `#graphql
       description
       descriptionHtml
       tags
-      collections(first: 1) {
+      collections(first: 10) {
         edges {
           node {
             products(first: 4, sortKey: BEST_SELLING, reverse: true) {
@@ -56,6 +66,9 @@ export const PRODUCT_BY_HANDLE_QUERY = `#graphql
             }
             title
             handle
+            metafield(namespace:"custom",key: "sort_order") {
+              value
+            }
           }
         }
       }

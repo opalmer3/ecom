@@ -37,6 +37,9 @@ export const COLLECTIONS_QUERY = `#graphql
               }
             }
           }
+          sortOrder: metafield(namespace:"custom",key: "sort_order") {
+            value
+          }
           products(first: $productsFirst, after: $productsAfter) {
             pageInfo {
               hasNextPage
