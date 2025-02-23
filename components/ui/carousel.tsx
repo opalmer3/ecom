@@ -81,9 +81,12 @@ const Carousel = React.forwardRef<
       setSelectedIndex(api.selectedScrollSnap());
     }, []);
 
-    const scrollToIndex = React.useCallback((index: number) => {
-      api?.scrollTo(index);
-    }, [api]);
+    const scrollToIndex = React.useCallback(
+      (index: number) => {
+        api?.scrollTo(index);
+      },
+      [api]
+    );
 
     const scrollPrev = React.useCallback(() => {
       api?.scrollPrev();
@@ -262,6 +265,50 @@ const CarouselNext = React.forwardRef<
 });
 CarouselNext.displayName = "CarouselNext";
 
+const CarouselProgress = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+  const { api, selectedIndex, onSelect } = useCarousel();
+  const [totalSlides, setTotalSlides] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!api) return;
+    setTotalSlides(api.scrollSnapList().length);
+  }, [api]);
+
+  return (
+    <div
+      ref={ref}
+      aria-label="Carousel progress"
+      role="tablist"
+      className={cn(
+        "flex gap-2 flex-wrap justify-center items-center",
+        className
+      )}
+      {...props}
+    >
+      {Array.from({ length: totalSlides }).map((_, index) => (
+        <button
+          key={index}
+          aria-label={`Go to slide ${index + 1}`}
+          aria-selected={index === selectedIndex}
+          role="tab"
+          className={cn(
+            "h-2 rounded-full transition-all duration-300 ease-in-out",
+            index === selectedIndex
+              ? "bg-primary w-8"
+              : "bg-muted hover:bg-primary/50 w-4",
+            "cursor-pointer"
+          )}
+          onClick={() => onSelect(index)}
+        />
+      ))}
+    </div>
+  );
+});
+CarouselProgress.displayName = "CarouselProgress";
+
 export {
   type CarouselApi,
   Carousel,
@@ -269,5 +316,6 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselProgress,
   useCarousel,
 };

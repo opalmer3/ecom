@@ -2,7 +2,7 @@ import * as React from "react";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { ThumbnailCarouselDots } from "@/components/carousel/carousel-thumbnails-dots";
 import { ThumbnailCarouselItem } from "@/components/carousel/carousel-thumbnails-item";
-import { Carousel, CarouselContent } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselProgress } from "@/components/ui/carousel";
 import { ImageEdge } from "@/types/storefront.types";
 
 export function ThumbnailCarousel({ content }: { content: ImageEdge[] }) {
@@ -36,8 +36,11 @@ export function ThumbnailCarousel({ content }: { content: ImageEdge[] }) {
   return (
     <Carousel className="lg:grid grid-cols-[auto_1fr] gap-(--spacing-sm)">
       <CarouselContent>{carouselItems}</CarouselContent>
-      <div className="grid grid-cols-4 gap-(--spacing-xs) lg:grid-cols-1 lg:w-20 lg:-order-1 mt-sm lg:mt-0">
+      <div className="hidden lg:grid gap-(--spacing-xs) grid-cols-1 w-20 -order-1">
         {thumbnailDots}
+      </div>
+      <div className="lg:hidden mt-4">
+        <CarouselProgress />
       </div>
     </Carousel>
   );

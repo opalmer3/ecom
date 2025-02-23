@@ -60,9 +60,12 @@ export function ProductHeader({ product, reviewWidget }: ProductHeaderProps) {
       ? ([...options[optionKeys[0]]].length > 1 || optionKeys.length > 1) && (
           <div className="py-sm border-y space-y-lg">
             {optionKeys.map((optionName, i) => (
-              <div key={optionName} className="space-y-md">
+              <div
+                key={optionName}
+                className="space-y-md overflow-x-auto -mx-8 pl-8 lg:pl-0 lg:mx-0"
+              >
                 <fieldset
-                  className="gap-(--spacing-sm) grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3"
+                  className="gap-(--spacing-sm) flex lg:grid lg:grid-cols-2 xl:grid-cols-3"
                   role="radiogroup"
                 >
                   <legend className="type-button-md font-semibold mb-sm col-span-2">
@@ -86,7 +89,10 @@ export function ProductHeader({ product, reviewWidget }: ProductHeaderProps) {
 
                     const isSelected = selectedOptions[optionName] === value;
                     return (
-                      <label key={value} className="cursor-pointer font-medium">
+                      <label
+                        key={value}
+                        className="cursor-pointer font-medium w-[200px] lg:w-auto last:mr-8 lg:last:mr-0"
+                      >
                         <input
                           checked={isSelected}
                           className="hidden"
@@ -97,7 +103,7 @@ export function ProductHeader({ product, reviewWidget }: ProductHeaderProps) {
                         />
                         <div
                           className={cn(
-                            "flex flex-col items-center gap-sm p-xs rounded-md h-full",
+                            "flex flex-col items-center gap-2xs lg:gap-sm p-xs rounded-md h-full",
                             isSelected
                               ? "border-2 border-secondary"
                               : "border-2 border-border",
