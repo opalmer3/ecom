@@ -72,23 +72,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${baseUrl}/${product.node.collections.edges[0]?.node.handle}/${product.node.handle}`,
     lastModified: new Date(product.node.updatedAt),
     changeFrequency: "daily" as const,
-    priority: 0.7,
+    priority: 1,
+    images: product.node.images.edges.slice(0, 3).map((image) => image.node.url),
   }));
 
   // Create collection routes
-  const collectionRoutes = collections.map((collection) => ({
-    url: `${baseUrl}/${collection.node.handle}`,
-    lastModified: new Date(collection.node.updatedAt),
-    changeFrequency: "weekly" as const,
-    priority: 0.6,
-  }));
+  const collectionRoutes = collections.map((collection) => {
+    const firstThreeProductImages = collection.node.products.edges
+      .slice(0, 3)
+      .map((product) => product.node.images.edges[0]?.node)
+      .filter((image): image is NonNullable<typeof image> => image != null);
+
+    return {
+      url: `${baseUrl}/${collection.node.handle}`,
+      lastModified: new Date(collection.node.updatedAt),
+      changeFrequency: "daily" as const,
+      priority: 1,
+      images: firstThreeProductImages.map((image) => image.url),
+    };
+  });
 
   // Create journal post routes
   const journalPostRoutes = journalPosts.map((post) => ({
     url: `${baseUrl}/journal/${post.slug}`,
     lastModified: new Date(post.metadata.modifiedDate),
-    changeFrequency: "monthly" as const,
-    priority: 0.5,
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
   }));
 
   return [

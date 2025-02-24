@@ -155,6 +155,7 @@ export default async function ProductPage({ params }: PageParams) {
             ? "https://schema.org/InStock"
             : "https://schema.org/OutOfStock",
           url: `${process.env.NEXT_PUBLIC_SITE_URL}/${collection}/${product}`,
+          priceValidUntil: "2025-12-31",
           ...(variant.node.sku && { sku: variant.node.sku }),
         }))}
         {...(ratingsWidget && {

@@ -49,6 +49,14 @@ export const COLLECTIONS_QUERY = `#graphql
               cursor
               node {
                 ...ProductCard
+                images(first: 3) {
+      edges {
+        node {
+          altText
+          url(transform: { preferredContentType: WEBP })
+        }
+      }
+    }
               }
             }
           }
