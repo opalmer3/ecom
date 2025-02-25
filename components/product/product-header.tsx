@@ -86,7 +86,7 @@ export function ProductHeader({ product, reviewWidget }: ProductHeaderProps) {
                                 option.value === value
                           )
                     );
-
+                    if (!variant) return null;
                     const isSelected = selectedOptions[optionName] === value;
                     return (
                       <label
