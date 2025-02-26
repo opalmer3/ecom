@@ -58,6 +58,7 @@ function ThumbnailCarouselItemComponent({ item, index }: Props) {
           containerClassName="mx-auto aspect-square rounded-md"
           loading={isFirstSlide ? "eager" : "lazy"}
           priority={isFirstSlide}
+          quality={100}
           sizes="(max-width: 1024px) 100vw, 50vw"
           src={item.url}
           onLoad={() => setLoaded(true)}

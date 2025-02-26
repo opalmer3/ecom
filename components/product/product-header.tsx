@@ -117,6 +117,7 @@ export function ProductHeader({ product, reviewWidget }: ProductHeaderProps) {
                                 fill
                                 alt={`${optionName} ${value}`}
                                 containerClassName="aspect-square"
+                                quality={100}
                                 sizes="128px"
                                 src={variant.node.image.url}
                               />

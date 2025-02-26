@@ -2,7 +2,11 @@ import * as React from "react";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { ThumbnailCarouselDots } from "@/components/carousel/carousel-thumbnails-dots";
 import { ThumbnailCarouselItem } from "@/components/carousel/carousel-thumbnails-item";
-import { Carousel, CarouselContent, CarouselProgress } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselProgress,
+} from "@/components/ui/carousel";
 import { ImageEdge } from "@/types/storefront.types";
 
 export function ThumbnailCarousel({ content }: { content: ImageEdge[] }) {
@@ -24,7 +28,7 @@ export function ThumbnailCarousel({ content }: { content: ImageEdge[] }) {
             alt={item.node.altText ?? "Product image"}
             containerClassName="aspect-square h-full overflow-hidden rounded-md"
             loading={idx < 4 ? "eager" : "lazy"}
-            quality={idx < 4 ? 100 : 75}
+            quality={100}
             sizes="(max-width: 1024px) 25vw, 64px"
             src={item.node.url}
           />
