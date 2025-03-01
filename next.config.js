@@ -19,6 +19,15 @@ const nextConfig = {
   },
   transpilePackages: ["next-mdx-remote"],
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  redirects: async () => {
+    return [
+      {
+        source: '/table-lamps/three-color-dimming-bedside-lamp-led',
+        destination: '/table-lamps/three-colour-dimming-bedside-lamp-led',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 const withMDX = createMDX({
