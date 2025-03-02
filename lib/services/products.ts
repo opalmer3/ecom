@@ -26,6 +26,15 @@ export const getProducts = unstable_cache(
       );
     }
 
+    for (const product of data?.products?.edges ?? []) {
+      product.node.collections.edges.sort((a, b) => {
+        return (
+          Number(a.node.metafield?.value ?? 0) -
+          Number(b.node.metafield?.value ?? 0)
+        );
+      });
+    }
+
     return data?.products?.edges || [];
   },
   ["products"],
