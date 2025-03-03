@@ -147,6 +147,18 @@ export default async function ProductPage({ params }: PageParams) {
         brand={{
           name: "The Modern Lighting Store",
         }}
+        hasMerchantReturnPolicy={{
+          applicableCountry: "GB",
+          returnPolicyCategory:
+            "https://schema.org/MerchantReturnFiniteReturnWindow",
+          merchantReturnDays: 30,
+          returnMethod: "https://schema.org/ReturnByMail",
+          returnFees: "https://schema.org/ReturnShippingFees",
+          returnShippingFeesAmount: {
+            value: 3.99,
+            currency: "GBP",
+          },
+        }}
         offers={data.product.variants.edges.map((variant) => ({
           "@type": "Offer",
           price: parseFloat(variant.node.price.amount),
@@ -156,6 +168,37 @@ export default async function ProductPage({ params }: PageParams) {
             : "https://schema.org/OutOfStock",
           url: `${process.env.NEXT_PUBLIC_SITE_URL}/${collection}/${product}`,
           priceValidUntil: "2025-12-31",
+          shippingDetails: {
+            shippingRate: {
+              value: parseFloat(variant.node.price.amount) > 50 ? 0 : 3.99,
+              currency: variant.node.price.currencyCode,
+            },
+            shippingDestination: {
+              addressCountry: "GB",
+            },
+            deliveryTime: {
+              handlingTime: {
+                minValue: 0,
+                maxValue: 1,
+                unitCode: "DAY",
+              },
+              transitTime: {
+                minValue:
+                  JSON.parse(
+                    data?.product?.metafields.find(
+                      (metafield) => metafield?.key === "shipping_date"
+                    )?.value ?? "{}"
+                  )?.minDays ?? 5,
+                maxValue:
+                  JSON.parse(
+                    data?.product?.metafields.find(
+                      (metafield) => metafield?.key === "shipping_date"
+                    )?.value ?? "{}"
+                  )?.maxDays ?? 10,
+                unitCode: "DAY",
+              },
+            },
+          },
           ...(variant.node.sku && { sku: variant.node.sku }),
         }))}
         {...(ratingsWidget && {

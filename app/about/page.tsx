@@ -27,9 +27,9 @@ export default function About() {
         logo={`${process.env.NEXT_PUBLIC_SITE_URL}/logo.png`}
         url={`${process.env.NEXT_PUBLIC_SITE_URL}`}
         images={[
-          "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Sc330662745e941528460605052904057n.webp?v=1736521961",
-          "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Sc89541d8f64649d594694d63c4a2beb3h.webp?v=1736521961",
-          "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Sa4888b20edc24dbfbd0b5175c0ea2efcS.webp?v=1736521961",
+          "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Bauhaus_Mushroom_Table_Lamp_3.webp?v=1741017247",
+          "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Contemporary_Nordic_Chandeliers.webp?v=1741017809",
+          "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Droplet_Glass_Pendant_Light.webp?v=1741018229",
         ]}
       />
       <div className="relative">
@@ -53,7 +53,7 @@ export default function About() {
 
         <HalfHero
           content={{
-            img: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Sc330662745e941528460605052904057n.webp?v=1736521961",
+            img: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Bauhaus_Mushroom_Table_Lamp_3.webp?v=1741017247",
             alt: "Modern lighting design showcasing exquisite craftsmanship",
             eyebrow: "Welcome to The Modern Lighting Store",
             title: "Where Lighting Meets Artistry",
@@ -64,7 +64,7 @@ export default function About() {
         <SplitContentBlock
           variant="third-right-small"
           content={{
-            img: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Sc89541d8f64649d594694d63c4a2beb3h.webp?v=1736521961",
+            img: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Droplet_Glass_Pendant_Light.webp?v=1741018229",
             alt: "Innovative lighting technology demonstration",
             eyebrow: "Innovation & Technology",
             title: "Driving Innovation in Lighting",
@@ -76,7 +76,7 @@ export default function About() {
           <SplitContentBlock
             variant="third-left-small"
             content={{
-              img: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Sa4888b20edc24dbfbd0b5175c0ea2efcS.webp?v=1736521961",
+              img: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Contemporary_Nordic_Chandeliers.webp?v=1741017809",
               alt: "Quality craftsmanship in lighting manufacturing",
               eyebrow: "Quality & Design",
               title: "Committed to Excellence",
@@ -90,7 +90,7 @@ export default function About() {
           <SplitContentBlock
             variant="third-right-small"
             content={{
-              img: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/S2d44c30f38194672ad66d7307d2248e78.webp?v=1735650385",
+              img: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/Contemporary_Nordic_Chandeliers_4.webp?v=1741017915",
               alt: "Beautifully lit interior showcasing modern lighting",
               eyebrow: "Our Promise",
               title: "Illuminate Your World",

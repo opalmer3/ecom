@@ -29,10 +29,10 @@ export default async function Home() {
           variant: "secondary",
         }}
         image={{
-          src: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/home_hero.jpg?v=1737568895",
+          src: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/assorted_ceiling_lights.jpg?v=1741017614",
           mobileSrc:
-            "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/home_hero_mobile.jpg?v=1737574826",
-          alt: "Stylish furniture and floor lamp",
+            "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/assorted_ceiling_lights_mobile.jpg?v=1741017644",
+          alt: "Modern lighting design showcasing exquisite craftsmanship",
         }}
       />
 
