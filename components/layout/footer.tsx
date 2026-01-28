@@ -1,6 +1,7 @@
 import { CollectionEdge } from "@/types/storefront.types";
 import { NavLink } from "./nav-link";
 import { Logo } from "@/components/Logo";
+import { siteConfig } from "@/lib/site.config";
 
 const footerLinks = {
   about: {
@@ -30,9 +31,7 @@ export function Footer({ collections }: { collections: CollectionEdge[] }) {
           <div className="space-y-3">
             <Logo />
             <p className="type-body-sm">
-              Sleek, modern lighting designs. Combining style, innovation, and
-              functionality, we illuminate your spaces with premium-quality
-              lighting tailored to enhance any environment.
+              {siteConfig.description}
             </p>
           </div>
 

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { siteConfig, generateSiteMetadata } from "@/lib/site.config";
 
 export default function ReturnsPolicyPage() {
   return (
@@ -42,9 +43,9 @@ export default function ReturnsPolicyPage() {
               To start a return, contact us at{" "}
               <a
                 className="text-primary hover:underline font-medium"
-                href="mailto:contact@modernlighting.store"
+                href={`mailto:${siteConfig.contact.email}`}
               >
-                contact@modernlighting.store
+                {siteConfig.contact.email}
               </a>
             </p>
             <p>
@@ -88,9 +89,9 @@ export default function ReturnsPolicyPage() {
               approved your return, please contact us at{" "}
               <a
                 className="text-primary hover:underline font-medium"
-                href="mailto:contact@modernlighting.store"
+                href={`mailto:${siteConfig.contact.email}`}
               >
-                contact@modernlighting.store
+                {siteConfig.contact.email}
               </a>
               .
             </p>
@@ -101,17 +102,7 @@ export default function ReturnsPolicyPage() {
   );
 }
 
-export const metadata: Metadata = {
-  title: "Easy Returns & Refunds | The Modern Lighting Store Policy",
-  description: "Hassle-free returns at The Modern Lighting Store. Learn about our return process, refund eligibility, and how we ensure a smooth shopping experience.",
-  openGraph: {
-    title: "Easy Returns & Refunds | The Modern Lighting Store Policy",
-    description: "Hassle-free returns at The Modern Lighting Store. Learn about our return process, refund eligibility, and how we ensure a smooth shopping experience.",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "Easy Returns & Refunds | The Modern Lighting Store Policy",
-    description: "Hassle-free returns at The Modern Lighting Store. Learn about our return process, refund eligibility, and how we ensure a smooth shopping experience.",
-  },
-};
+export const metadata: Metadata = generateSiteMetadata(
+  "Easy Returns & Refunds Policy",
+  `Hassle-free returns at ${siteConfig.name}. Learn about our return process, refund eligibility, and how we ensure a smooth shopping experience.`
+);

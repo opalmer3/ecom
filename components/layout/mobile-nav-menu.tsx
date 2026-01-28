@@ -11,6 +11,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { NavLink } from "@/components/layout/nav-link";
 import { FooterLink } from "@/components/layout/footer-link";
+import { siteConfig } from "@/lib/site.config";
 import { Separator } from "@/components/ui/separator";
 import { CollectionEdge } from "@/types/storefront.types";
 import { type MouseEvent, useCallback, useState } from "react";
@@ -39,7 +40,7 @@ export function MobileMenu({ collections, navItems }: MobileMenuProps) {
             <span className="sr-only">Toggle Menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent className="p-0 flex flex-col overflow-auto" side="left">
+        <SheetContent className="p-0 flex flex-col overflow-auto glass border-l border-white/20" side="left">
           <SheetTitle>
             <span className="sr-only">Navigation Menu</span>
           </SheetTitle>
@@ -89,7 +90,7 @@ export function MobileMenu({ collections, navItems }: MobileMenuProps) {
               </FooterLink>
             </div>
             <p className="type-body-sm">
-              &copy; THE MODERN LIGHTING STORE {new Date().getFullYear()}
+              &copy; {siteConfig.name.toUpperCase()} {new Date().getFullYear()}
             </p>
           </div>
         </SheetContent>

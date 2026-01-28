@@ -8,31 +8,31 @@ import {
 } from "@/lib/services/collections";
 import { CollectionCard } from "@/components/collection/collection-card";
 import LazyWrap from "@/components/lazy-wrap";
+import { siteConfig } from "@/lib/site.config";
 
 export const revalidate = 3600;
 export default async function Home() {
   const [bestsellers, collections] = await Promise.all([
-    getCollectionByHandle("best-sellers"),
+    getCollectionByHandle(siteConfig.featuredCollection),
     getCollections(8),
   ]);
 
   return (
     <>
       <Hero
-        description="Explore innovative lighting designs crafted to elevate your living spaces."
-        title="Illuminate Your World"
+        description={siteConfig.hero.description}
+        title={siteConfig.hero.title}
         xAlign="left"
         yAlign="bottom"
         cta={{
-          label: "Browse Our Bestsellers",
-          href: "#bestsellers",
+          label: siteConfig.hero.cta.label,
+          href: siteConfig.hero.cta.href,
           variant: "secondary",
         }}
         image={{
-          src: "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/assorted_ceiling_lights.jpg?v=1741017614",
-          mobileSrc:
-            "https://cdn.shopify.com/s/files/1/0883/7398/5623/files/assorted_ceiling_lights_mobile.jpg?v=1741017644",
-          alt: "Modern lighting design showcasing exquisite craftsmanship",
+          src: siteConfig.hero.image.src,
+          mobileSrc: siteConfig.hero.image.mobileSrc,
+          alt: siteConfig.hero.image.alt,
         }}
       />
 

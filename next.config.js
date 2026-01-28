@@ -15,6 +15,16 @@ const nextConfig = {
         hostname: "ae01.alicdn.com",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "i.pravatar.cc",
+        pathname: "**",
+      },
     ],
   },
   transpilePackages: ["next-mdx-remote"],

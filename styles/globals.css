@@ -1,5 +1,25 @@
 @import "tailwindcss";
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 @theme {
   --font-title: var(--font-title), serif;
   --font-sans: var(--font-sans), system-ui, sans-serif;
@@ -50,6 +70,8 @@
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-scroll: scroll 40s linear infinite;
   --animate-scroll-reverse: scroll-reverse 40s linear infinite;
+  --animate-fade-in: fadeIn 1.5s ease-out forwards;
+  --animate-scale-in: scaleIn 1.5s ease-out forwards;
 }
 
 @utility container {
@@ -58,35 +80,33 @@
 }
 
 @utility type-title-sm {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  line-height: 1.25;
+  font-family: var(--font-title);
   font-weight: 500;
-  letter-spacing: 0.025em;
+  letter-spacing: -0.01em;
 }
 
 @utility type-title-md {
-  font-size: 1.5rem;
-  line-height: 2rem;
-  font-family: var(--font-sans);
+  font-size: 2rem;
+  line-height: 1.2;
+  font-family: var(--font-title);
   font-weight: 500;
-  letter-spacing: 0.025em;
 }
 
 @utility type-title-lg {
-  font-size: 2rem;
-  line-height: 2.5rem;
-  font-family: var(--font-sans);
+  font-size: 3rem;
+  line-height: 1.1;
+  font-family: var(--font-title);
   font-weight: 500;
-  letter-spacing: 0.025em;
 }
 
 @utility type-title-xl {
-  font-size: 2.5rem;
-  line-height: 3rem;
-  font-family: var(--font-sans);
+  font-size: 4.5rem;
+  line-height: 1.05;
+  font-family: var(--font-title);
   font-weight: 500;
-  letter-spacing: 0.025em;
+  letter-spacing: -0.02em;
 }
 
 @utility type-body-sm {
@@ -149,6 +169,44 @@
   text-transform: capitalize;
 }
 
+@utility animate-fade-in {
+  animation: var(--animate-fade-in);
+  opacity: 0;
+}
+
+@utility animate-scale-in {
+  animation: var(--animate-scale-in);
+  opacity: 0;
+}
+
+@utility animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+@utility animation-delay-700 {
+  animation-delay: 700ms;
+}
+
+@utility animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+@utility glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@utility glass-dark {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility transition-premium {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @layer base {
   *,
   ::after,
@@ -166,35 +224,35 @@
 }
 
 :root {
-  --background: 0 0 100%;
-  --foreground: var(--primary);
-  --card: var(--background);
-  --card-foreground: var(--primary);
-  --popover: var(--background);
-  --popover-foreground: var(--primary);
-  --primary: 179 100% 11.76%;
-  --primary-foreground: 0 0 100%;
-  --secondary: 43.17 92.05% 70.39%;
-  --secondary-foreground: var(--primary);
-  --muted: 43.17 60% 85%;
-  --muted-foreground: 179 80% 15%;
-  --accent: 46.67 25.71% 93.14%;
-  --accent-foreground: var(--primary);
+  --background: 35 25% 98%;
+  --foreground: 20 15% 15%;
+  --card: 35 25% 98%;
+  --card-foreground: 20 15% 15%;
+  --popover: 35 25% 98%;
+  --popover-foreground: 20 15% 15%;
+  --primary: 12 35% 42%;
+  --primary-foreground: 35 25% 98%;
+  --secondary: 35 25% 92%;
+  --secondary-foreground: 12 35% 42%;
+  --muted: 35 20% 90%;
+  --muted-foreground: 20 15% 35%;
+  --accent: 345 25% 65%;
+  --accent-foreground: 35 25% 98%;
   --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0 100%;
+  --destructive-foreground: 35 25% 98%;
   --warning: 38 92% 50%;
-  --warning-foreground: 0 0 100%;
-  --border: 46.67 25.71% 93.14%;
-  --input: 46.67 25.71% 93.14%;
+  --warning-foreground: 35 25% 98%;
+  --border: 20 10% 88%;
+  --input: 20 10% 88%;
   --light: 0 0 100%;
-  --ring: var(--primary);
-  --radius: 0.5rem;
+  --ring: 12 35% 42%;
+  --radius: 0rem;
 }
 
 body {
-  font-family: "DM Sans", sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
 
-  @apply bg-background text-foreground type-body-md;
+  @apply bg-background text-foreground type-body-md font-light;
 }
 
 @keyframes accordion-down {

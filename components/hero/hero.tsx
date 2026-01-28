@@ -1,9 +1,41 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { heroContentVariants } from "./hero.variants";
-import { ComponentProps } from "react";
+import { ComponentProps, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+
+function useInView(options = {}) {
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    const currentRef = ref.current;
+    if (!currentRef) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.1,
+        ...options,
+      }
+    );
+
+    observer.observe(currentRef);
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, [options]);
+
+  return [ref, isInView];
+}
 
 interface HeroImage {
   src: string;
@@ -36,6 +68,7 @@ export function Hero({
   cta,
   className,
 }: HeroProps) {
+  const [ref, isInView] = useInView();
   return (
     <div
       className={cn(
@@ -58,17 +91,40 @@ export function Hero({
 
       <div className={heroContentVariants({ xAlign, yAlign })}>
         <div className="space-y-lg md:max-w-[400px]">
-          <h1 className="type-title-xl text-light">{title}</h1>
+          <h1
+            ref={ref as React.RefObject<HTMLHeadingElement>}
+            className={cn(
+              "type-title-xl text-light",
+              isInView
+                ? "animate-fade-in animation-delay-300 motion-reduce:animate-none"
+                : "opacity-0"
+            )}
+          >
+            {title}
+          </h1>
           {description && (
-            <p className="type-body-md md:type-body-lg text-light">
+            <p
+              className={cn(
+                "type-body-md md:type-body-lg text-light",
+                isInView
+                  ? "animate-fade-in animation-delay-700 motion-reduce:animate-none"
+                  : "opacity-0"
+              )}
+            >
               {description}
             </p>
           )}
           {cta && (
             <Button
               asChild
-              className="w-full md:min-w-[200px] md:w-auto"
               variant={cta.variant ?? "secondary"}
+              className={cn(
+                "w-full md:min-w-[200px] md:w-auto",
+                isInView
+                  ? "animate-scale-in animation-delay-1000 motion-reduce:animate-none"
+                  : "opacity-0",
+                isInView && !description && "animation-delay-700"
+              )}
             >
               <Link href={cta.href}>{cta.label}</Link>
             </Button>

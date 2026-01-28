@@ -33,7 +33,7 @@ export const Input = forwardRef<
       <Component
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
-        className={`w-full px-md py-xs border rounded-md focus:ring-2 focus:ring-primary focus:border-primary bg-background ${
+        className={`w-full px-md py-xs border rounded-md focus:ring-1 focus:ring-primary focus:border-primary bg-background transition-premium outline-hidden ${
           error ? "border-red-500" : "border-border"
         } ${className}`}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

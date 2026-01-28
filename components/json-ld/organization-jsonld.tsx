@@ -1,16 +1,18 @@
+import { siteConfig } from "@/lib/site.config";
+
 interface OrganizationJsonLdProps {
   name?: string;
-  description: string;
-  url: string;
+  description?: string;
+  url?: string;
   logo?: string;
   images?: string[];
   sameAs?: string[]; // Social media profiles
 }
 
 export function OrganizationJsonLd({
-  name = "The Modern Lighting Store",
-  description,
-  url,
+  name = siteConfig.name,
+  description = siteConfig.description,
+  url = process.env.NEXT_PUBLIC_SITE_URL || "https://localhost:3000",
   logo = `${process.env.NEXT_PUBLIC_SITE_URL}/logo.png`,
   images = [],
   sameAs = [],
@@ -26,7 +28,7 @@ export function OrganizationJsonLd({
       url: logo,
     },
     image: images,
-    email: "contact@modernlighting.store",
+    email: siteConfig.contact.email,
     sameAs,
     address: {
       "@type": "PostalAddress",

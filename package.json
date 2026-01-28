@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "codegen": "graphql-codegen",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "vitest",
+    "test:browser": "vitest --browser"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
@@ -52,13 +54,19 @@
     "@types/nodemailer": "^6.4.17",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.6.0",
+    "@vitest/browser": "^3.2.4",
     "eslint": "^9",
     "eslint-config-next": "15.1.0",
     "graphql": "^16.8.1",
     "husky": "^9.1.7",
+    "jsdom": "^26.1.0",
+    "playwright": "^1.53.2",
     "postcss": "^8",
     "tailwindcss": "^4.0.0",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.2.4",
+    "vitest-browser-react": "^1.0.0"
   }
 }

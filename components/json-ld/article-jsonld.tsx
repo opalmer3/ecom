@@ -1,3 +1,5 @@
+import { siteConfig } from "@/lib/site.config";
+
 interface ArticleJsonLdProps {
   title: string;
   description?: string;
@@ -13,7 +15,7 @@ export function ArticleJsonLd({
   description,
   publishedTime,
   modifiedTime,
-  authors = ["The Modern Lighting Store"],
+  authors = [siteConfig.seo.author],
   images,
   url,
 }: ArticleJsonLdProps) {
@@ -32,7 +34,7 @@ export function ArticleJsonLd({
     })),
     publisher: {
       "@type": "Organization",
-      name: "The Modern Lighting Store",
+      name: siteConfig.name,
       logo: {
         "@type": "ImageObject",
         url: `${process.env.NEXT_PUBLIC_SITE_URL}/logo.png`,
